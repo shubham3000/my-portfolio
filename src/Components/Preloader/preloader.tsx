@@ -96,7 +96,7 @@ const LoaderCore = ({
 export const PreLoader = ({
   loadingStates,
   loading,
-  duration = 2500,
+  duration = 2000,
   loop = false,
   onComplete,
 }: {
