@@ -2,44 +2,53 @@
 import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/Components/ui/sidebar";
 import {
-  IconArrowLeft,
-  IconBrandTabler,
-  IconSettings,
+  IconCertificate,
+  IconRosetteDiscountCheckFilled,
+  IconSchool,
+  IconBriefcaseFilled,
+  IconUserCode,
   IconUserBolt,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/utils/cn";
+import ShubhamAvatar from "@/assests/shubhamavatar.jpg";
 
 export function PortfolioSidebar() {
   const links = [
     {
-      label: "Dashboard",
+      label: "About Me",
       href: "/about",
-      icon: (
-        <IconBrandTabler className="text-white h-5 w-5 flex-shrink-0" />
-      ),
+      icon: <IconUserBolt className="text-white h-5 w-5 flex-shrink-0" />,
     },
     {
-      label: "Profile",
+      label: "Educations",
       href: "/profile",
+      icon: <IconSchool className="text-white h-5 w-5 flex-shrink-0" />,
+    },
+    {
+      label: "Work Experience",
+      href: "#",
       icon: (
-        <IconUserBolt className="text-white h-5 w-5 flex-shrink-0" />
+        <IconBriefcaseFilled className="text-white h-5 w-5 flex-shrink-0" />
       ),
     },
     {
-      label: "Settings",
+      label: "Skills",
       href: "#",
-      icon: (
-        <IconSettings className="text-white h-5 w-5 flex-shrink-0" />
-      ),
+      icon: <IconUserCode className="text-white h-5 w-5 flex-shrink-0" />,
     },
     {
-      label: "Logout",
+      label: "Certifications",
+      href: "#",
+      icon: <IconCertificate className="text-white h-5 w-5 flex-shrink-0" />,
+    },
+    {
+      label: "Socials",
       href: "#",
       icon: (
-        <IconArrowLeft className="text-white h-5 w-5 flex-shrink-0" />
+        <IconRosetteDiscountCheckFilled className="text-white h-5 w-5 flex-shrink-0" />
       ),
     },
   ];
@@ -52,7 +61,7 @@ export function PortfolioSidebar() {
     >
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10 rounded-md ">
-          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden z-20">
             {open ? <Logo /> : <LogoIcon />}
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
@@ -64,10 +73,10 @@ export function PortfolioSidebar() {
             <SidebarLink
               link={{
                 label: "Shubham Sadhu",
-                href: "#",
+                href: "/about",
                 icon: (
                   <Image
-                    src=""
+                    src={ShubhamAvatar}
                     className="h-7 w-7 flex-shrink-0 rounded-full"
                     width={50}
                     height={50}

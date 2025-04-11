@@ -23,9 +23,7 @@ export default function RootLayout({
       <body className={arimo.className}>
         <div className="flex">
           <PortfolioSidebar />
-          <Dashboard>
-          {children}
-            </Dashboard>
+          <Dashboard>{children}</Dashboard>
         </div>
       </body>
     </html>

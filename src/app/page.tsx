@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
+import { redirect } from "next/navigation";
 import { PreLoader } from "@/Components/Preloader/preloader";
-import { PortfolioSidebar } from "@/Components/sidebar/sidebar";
-import Dashboard from "@/Components/Dashboard/dashboard";
+import { BackgroundBeams } from "@/Components/ui/background-beams";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -32,12 +32,7 @@ export default function Home() {
           <BackgroundBeams />
         </>
       ) : (
-        <> */}
-          {/* <div className="flex">
-            <PortfolioSidebar/>
-            <Dashboard/>
-          </div> */}
-        {/* </>
+        <>{redirect("/about")}</>
       )} */}
     </div>
   );
