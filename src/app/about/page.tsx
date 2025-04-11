@@ -92,7 +92,7 @@ export default function page() {
           <div className="flex justify-center">
             <Image
               src={ShubhamProfile}
-              className="w-1/2 h-1/2 rounded-md"
+              className="w-1/2 h-1/2 rounded-lg"
               alt="Avatar"
             />
           </div>

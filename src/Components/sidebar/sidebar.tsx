@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/Components/ui/sidebar";
 import {
   IconCertificate,
-  IconRosetteDiscountCheckFilled,
   IconSchool,
   IconBriefcaseFilled,
-  IconUserCode,
   IconUserBolt,
+  IconDeviceGamepad2,
+  IconPhoneDone,
+  IconCodeCircle,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -24,7 +25,7 @@ export function PortfolioSidebar() {
     },
     {
       label: "Educations",
-      href: "/profile",
+      href: "/education",
       icon: <IconSchool className="text-white h-5 w-5 flex-shrink-0" />,
     },
     {
@@ -37,7 +38,7 @@ export function PortfolioSidebar() {
     {
       label: "Skills",
       href: "#",
-      icon: <IconUserCode className="text-white h-5 w-5 flex-shrink-0" />,
+      icon: <IconCodeCircle className="text-white h-5 w-5 flex-shrink-0" />,
     },
     {
       label: "Certifications",
@@ -45,10 +46,17 @@ export function PortfolioSidebar() {
       icon: <IconCertificate className="text-white h-5 w-5 flex-shrink-0" />,
     },
     {
-      label: "Socials",
+      label: "Hobbies",
       href: "#",
       icon: (
-        <IconRosetteDiscountCheckFilled className="text-white h-5 w-5 flex-shrink-0" />
+        <IconDeviceGamepad2 className="text-white h-5 w-5 flex-shrink-0" />
+      ),
+    },
+    {
+      label: "Contact Me",
+      href: "#",
+      icon: (
+        <IconPhoneDone className="text-white h-5 w-5 flex-shrink-0" />
       ),
     },
   ];
