@@ -4,7 +4,6 @@ import Shubham from "@/assests/shubham.jpg";
 import Image from "next/image";
 import { BackgroundGradient } from "../ui/background-gradient";
 import { FlipWords } from "../ui/flip-words";
-import { kalnia } from "@/app/layout";
 
 export default function hero() {
   const words = [
