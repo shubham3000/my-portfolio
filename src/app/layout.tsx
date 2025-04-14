@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import { Arimo, Kalnia } from "next/font/google";
 import "./globals.css";
 import { PortfolioSidebar } from "@/Components/sidebar/sidebar";
 import Dashboard from "@/Components/Dashboard/dashboard";
-
-// const inter = Inter({ subsets: ["latin"] });
-const arimo = Arimo({ subsets: ["latin"] });
-const kalnia = Kalnia({ subsets: ["latin"] });
+import { Inter } from "next/font/google";
 
 // export const metadata: Metadata = {
 //   title: "Shubham's Protfolio",
 //   description: "I am a Frontend Developer.",
 // };
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -20,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={arimo.className}>
+      <body className={inter.className}>
         <div className="flex">
           <PortfolioSidebar />
           <Dashboard>{children}</Dashboard>
@@ -29,5 +27,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-export { kalnia };
