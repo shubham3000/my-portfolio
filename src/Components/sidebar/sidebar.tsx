@@ -9,6 +9,7 @@ import {
   IconDeviceGamepad2,
   IconPhoneDone,
   IconCodeCircle,
+  IconFiles,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -30,9 +31,16 @@ export function PortfolioSidebar() {
     },
     {
       label: "Work Experience",
-      href: "#",
+      href: "work-experience",
       icon: (
         <IconBriefcaseFilled className="text-white h-5 w-5 flex-shrink-0" />
+      ),
+    },
+    {
+      label: "Projects",
+      href: "#",
+      icon: (
+        <IconFiles className="text-white h-5 w-5 flex-shrink-0" />
       ),
     },
     {

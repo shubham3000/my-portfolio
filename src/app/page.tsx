@@ -7,22 +7,23 @@ import { BackgroundBeams } from "@/Components/ui/background-beams";
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const loadingStates = [
-    { text: "Initializing..." },
-    { text: "Fetching data..." },
-    { text: "Processing..." },
-    { text: "Finalizing..." },
-    { text: "Complete!" },
+    { text: "Importing creativity..." },
+    { text: "Slapping on some Tailwind..." },
+    { text: "Prettifying code like a champ 😎 ..." },
+    { text: "Rendering awesomeness..." },
+    { text: "Injecting animations..." },
+    { text: "Done! Looks good on mobile too. 👀" },
   ];
 
   const handleLoaderComplete = () => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 2000);
   };
 
   return (
     <div>
-      {/* {loading ? (
+      {loading ? (
         <>
           <PreLoader
             loadingStates={loadingStates}
@@ -33,7 +34,7 @@ export default function Home() {
         </>
       ) : (
         <>{redirect("/about")}</>
-      )} */}
+      )}
     </div>
   );
 }

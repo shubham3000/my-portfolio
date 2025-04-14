@@ -23,37 +23,31 @@ const socials = [
     title: "Linkedin",
     href: "https://www.linkedin.com/in/shubham-sadhu-9a0493201",
     icon: IconBrandLinkedin,
-    hover: "text-blue-500",
   },
   {
     title: "Instagram",
     href: "#",
     icon: IconBrandInstagram,
-    hover: "text-pink-300",
   },
   {
     title: "Github",
     href: "https://github.com/shubham3000",
     icon: IconBrandGithub,
-    hover: "text-gray-500",
   },
   {
     title: "Shubhamsadhu02@gmail.com",
     href: "mailto:shubhamsadhu02@gmail.com",
     icon: IconMail,
-    hover: "text-red-400",
   },
   {
     title: "Resume",
     href: "/resume/Shubham Sadhu_Resume.pdf",
     icon: IconFileCv,
-    hover: "text-blue-300",
   },
   {
     title: "+91-80024 90015",
     href: "#",
     icon: IconPhone,
-    hover: "text-green-300",
   },
 ];
 
@@ -109,8 +103,7 @@ export default function page() {
                   className="relative group flex items-center justify-center"
                 >
                   <item.icon
-                    className={`text-white h-8 w-8 flex-shrink-0 hover:${item.hover}`}
-                    title="Linkedin"
+                    className="text-white h-8 w-8 flex-shrink-0 hover:text-purple-500"
                   />
                   <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
                     {item.title}

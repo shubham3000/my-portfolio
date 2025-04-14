@@ -11,7 +11,7 @@ export default function page() {
       title: "2018-2022",
       content: (
         <div>
-          <p className="text-white text-lg font-semibold mb-4">
+          <p className="text-white text-2xl font-semibold mb-4">
             Bachelors of Technology in Computer Science and Enginnering
           </p>
           <p className="text-white text-xs md:text-sm font-normal mb-4">
@@ -55,7 +55,9 @@ export default function page() {
           </div>
           <div className="mt-4">
             <div>
-              <p className="text-white text-lg font-semibold mb-4">Head of Robotics Club</p>
+              <p className="text-white text-lg font-semibold mb-4">
+                Head of Robotics Club
+              </p>
               <ul className="list-disc ml-6">
                 <li className="text-white text-xs md:text-sm font-normal mb-4">
                   Guided a team in developing and programming robots to compete
@@ -68,7 +70,9 @@ export default function page() {
               </ul>
             </div>
             <div>
-              <p className="text-white text-lg font-semibold mb-4">Organized Annual Tech Fest, Techtrix</p>
+              <p className="text-white text-lg font-semibold mb-4">
+                Organized Annual Tech Fest, Techtrix
+              </p>
               <ul className="list-disc ml-6">
                 <li className="text-white text-xs md:text-sm font-normal mb-4">
                   Spearheaded the planning and execution of the college’s
@@ -82,7 +86,9 @@ export default function page() {
               </ul>
             </div>
             <div>
-              <p className="text-white text-lg font-semibold mb-4">Participated in Inter-College Robotics Competitions</p>
+              <p className="text-white text-lg font-semibold mb-4">
+                Participated in Inter-College Robotics Competitions
+              </p>
               <ul className="list-disc ml-6">
                 <li className="text-white text-xs md:text-sm font-normal mb-4">
                   Represented college in various robotics events and
@@ -107,7 +113,7 @@ export default function page() {
       title: "2015-2017",
       content: (
         <div>
-          <p className="text-white text-lg font-semibold mb-4">
+          <p className="text-white text-2xl font-semibold mb-4">
             Senior Secondary School
           </p>
           <p className="text-white text-xs md:text-sm font-normal mb-4">
@@ -123,7 +129,7 @@ export default function page() {
       title: "2015",
       content: (
         <div>
-          <p className="text-white text-lg font-semibold mb-4">
+          <p className="text-white text-2xl font-semibold mb-4">
             Secondary School
           </p>
           <p className="text-white text-xs md:text-sm font-normal mb-4">
@@ -138,7 +144,7 @@ export default function page() {
   ];
   return (
     <div className="w-full">
-      <Timeline data={data} />
+      <Timeline data={data} headerTitle={"Chapters of Growth"} />
     </div>
   );
 }
