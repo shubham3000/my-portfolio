@@ -38,7 +38,7 @@ export function PortfolioSidebar() {
     },
     {
       label: "Projects",
-      href: "#",
+      href: "/projects",
       icon: (
         <IconFiles className="text-white h-5 w-5 flex-shrink-0" />
       ),
@@ -50,7 +50,7 @@ export function PortfolioSidebar() {
     },
     {
       label: "Certifications",
-      href: "#",
+      href: "/certifications",
       icon: <IconCertificate className="text-white h-5 w-5 flex-shrink-0" />,
     },
     {
