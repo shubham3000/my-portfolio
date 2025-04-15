@@ -54,7 +54,7 @@ const projects = [
 export default function page() {
   return (
     <div className="flex flex-col">
-      <div className="max-w-7xl py-20 px-4 md:px-8 lg:px-10">
+      <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
         <h2 className="text-lg md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Certified Excellence
         </h2>

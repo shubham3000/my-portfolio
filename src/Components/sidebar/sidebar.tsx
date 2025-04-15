@@ -45,7 +45,7 @@ export function PortfolioSidebar() {
     },
     {
       label: "Skills",
-      href: "#",
+      href: "/skills",
       icon: <IconCodeCircle className="text-white h-5 w-5 flex-shrink-0" />,
     },
     {
@@ -53,20 +53,20 @@ export function PortfolioSidebar() {
       href: "/certifications",
       icon: <IconCertificate className="text-white h-5 w-5 flex-shrink-0" />,
     },
-    {
-      label: "Hobbies",
-      href: "#",
-      icon: (
-        <IconDeviceGamepad2 className="text-white h-5 w-5 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Contact Me",
-      href: "#",
-      icon: (
-        <IconPhoneDone className="text-white h-5 w-5 flex-shrink-0" />
-      ),
-    },
+    // {
+    //   label: "Hobbies",
+    //   href: "#",
+    //   icon: (
+    //     <IconDeviceGamepad2 className="text-white h-5 w-5 flex-shrink-0" />
+    //   ),
+    // },
+    // {
+    //   label: "Contact Me",
+    //   href: "#",
+    //   icon: (
+    //     <IconPhoneDone className="text-white h-5 w-5 flex-shrink-0" />
+    //   ),
+    // },
   ];
   const [open, setOpen] = useState(false);
   return (
