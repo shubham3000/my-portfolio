@@ -26,7 +26,7 @@ const socials = [
   },
   {
     title: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/designxd_55/",
     icon: IconBrandInstagram,
   },
   {
@@ -46,7 +46,7 @@ const socials = [
   },
   {
     title: "+91-80024 90015",
-    href: "#",
+    href: "https://wa.me/918002490015",
     icon: IconPhone,
   },
 ];
