@@ -31,7 +31,7 @@ export default function page() {
 
   return (
     <div className="flex flex-col">
-      <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
+      <div className="max-w-7xl py-10 px-4 md:px-8">
         <h2 className="text-lg md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Ctrl + Me Time
         </h2>
@@ -41,7 +41,7 @@ export default function page() {
           <Feature key={hobbie.title} {...hobbie} index={index} />
         ))}
       </div>
-      <div className="px-4 md:px-8 lg:px-10">
+      <div className="px-4 md:px-8">
       <h2 className="text-lg md:text-3xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Gallery
         </h2>

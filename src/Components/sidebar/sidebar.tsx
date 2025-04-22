@@ -10,6 +10,7 @@ import {
   IconPhoneDone,
   IconCodeCircle,
   IconFiles,
+  IconCircleDottedLetterF,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -43,6 +44,13 @@ export function PortfolioSidebar() {
         <IconFiles className="text-white h-5 w-5 flex-shrink-0" />
       ),
     },
+    // {
+    //   label: "Freelancing",
+    //   href: "/freelance",
+    //   icon: (
+    //     <IconCircleDottedLetterF className="text-white h-5 w-5 flex-shrink-0" />
+    //   ),
+    // },
     {
       label: "Skills",
       href: "/skills",

@@ -12,7 +12,7 @@ export default function dashboard({children}:Readonly<{children:React.ReactNode}
             ></div>
           ))}
         </div> */}
-        <div className="flex gap-2 flex-1">
+        <div className="flex gap-2 justify-center flex-1">
           {children}
         </div>
       </div>
