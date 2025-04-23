@@ -5,7 +5,7 @@ export default function page() {
     <div className="w-full font-sans md:px-10">
       <div className="flex flex-col">
         <div className="max-w-7xl py-10 px-4 md:px-8">
-          <h2 className="text-lg md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+          <h2 className="text-4xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
             My Story
           </h2>
         </div>

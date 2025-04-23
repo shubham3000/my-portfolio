@@ -87,11 +87,11 @@ export default function page() {
               <div className="flex justify-center">
                 <Image
                   src={ShubhamProfile}
-                  className="w-1/2 h-1/2 rounded-lg"
+                  className="w-96 h-80 lg:w-1/2 Lg:h-1/2 rounded-lg"
                   alt="Avatar"
                 />
               </div>
-              <h1 className="relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
+              <h1 className="relative z-10 text-4xl md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
                 Shubham Sadhu
               </h1>
               <div className="text-neutral-500 max-w-lg mx-auto my-2 relative z-10 flex justify-center space-x-6">
@@ -103,7 +103,7 @@ export default function page() {
                       target="__blank"
                       className="relative group flex items-center justify-center"
                     >
-                      <item.icon className="text-white h-8 w-8 flex-shrink-0 hover:text-purple-500" />
+                      <item.icon className="text-white h-6 lg:h-8 w-6 lg:w-8 flex-shrink-0 hover:text-purple-500" />
                       <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
                         {item.title}
                         <div className="absolute left-1/2 top-full -translate-x-1/2 w-2 h-2 bg-gray-600 rotate-45"></div>
@@ -113,14 +113,14 @@ export default function page() {
                 ))}
               </div>
               <div className="flex justify-center space-x-4">
-                <p className="text-neutral-500 my-2 text-lg">Tech Stacks:</p>
+                <p className="text-neutral-500 my-2 text-sm lg:text-lg">Tech Stacks:</p>
                 <div className="flex items-center justify-center">
                   {techStacks.map((item, key) => (
                     <div
                       key={key}
                       className="relative group flex items-center justify-center mr-4"
                     >
-                      <item.icon className="text-white h-8 w-8 flex-shrink-0 hover:text-purple-500" />
+                      <item.icon className="text-white h-6 lg:h-8 w-6 lg:w-8 flex-shrink-0 hover:text-purple-500" />
                       <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
                         {item.title}
                         <div className="absolute left-1/2 top-full -translate-x-1/2 w-2 h-2 bg-gray-600 rotate-45"></div>

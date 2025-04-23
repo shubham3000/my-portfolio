@@ -32,7 +32,7 @@ export default function page() {
   return (
     <div className="flex flex-col">
       <div className="max-w-7xl py-10 px-4 md:px-8">
-        <h2 className="text-lg md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h2 className="text-3xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Ctrl + Me Time
         </h2>
       </div>
@@ -42,7 +42,7 @@ export default function page() {
         ))}
       </div>
       <div className="px-4 md:px-8">
-      <h2 className="text-lg md:text-3xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+      <h2 className="text-3xl md:text-3xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Gallery
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full ">
@@ -79,7 +79,7 @@ export default function page() {
             <Image
               src={Pic6}
               alt="pic1"
-              className="w-full h-96 col-span-2 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
+              className="w-full h-60 lg:h-96 lg:col-span-2 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
             />
             <Image
               src={Pic3}

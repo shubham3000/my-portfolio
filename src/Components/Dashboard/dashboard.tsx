@@ -3,7 +3,7 @@ import React from 'react'
 export default function dashboard({children}:Readonly<{children:React.ReactNode}>) {
   return (
     <div className="flex flex-1">
-      <div className="p-2 md:p-10 rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-screen overflow-y-scroll">
+      <div className="p-2 md:p-10 rounded-tl-2xl lg:border border-neutral-200 bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-screen overflow-y-scroll">
         {/* <div className="flex gap-2">
           {[...new Array(4)].map((i) => (
             <div
@@ -12,7 +12,7 @@ export default function dashboard({children}:Readonly<{children:React.ReactNode}
             ></div>
           ))}
         </div> */}
-        <div className="flex gap-2 justify-center flex-1">
+        <div className="flex gap-2 justify-center items-center lg:items-start flex-1">
           {children}
         </div>
       </div>

@@ -151,71 +151,71 @@ export default function page() {
   return (
     <div className="flex flex-col">
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Programming Languages
         </h2>
       </div>
-      <div className="flex flex-wrap relative z-10 py-5 px-4 md:px-8 w-full">
+      <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {languages.map((language, index) => (
           <Feature key={language.title} {...language} index={index} />
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Frontend Technologies
         </h2>
       </div>
-      <div className="flex flex-wrap relative z-10 py-5 px-4 md:px-8 w-full">
+      <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {frontends.map((frontend, index) => (
           <Feature key={frontend.title} {...frontend} index={index} />
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Backend &amp; Dev Tools
         </h2>
       </div>
-      <div className="flex flex-wrap relative z-10 py-5 px-4 md:px-8 w-full">
+      <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {backends.map((backend, index) => (
           <Feature key={backend.title} {...backend} index={index} />
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Databases &amp; DB Tools
         </h2>
       </div>
-      <div className="flex flex-wrap relative z-10 py-5 px-4 md:px-8 w-full">
+      <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {datbases.map((datbase, index) => (
           <Feature key={datbase.title} {...datbase} index={index} />
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Cloud &amp; Deployment
         </h2>
       </div>
-      <div className="flex flex-wrap relative z-10 py-5 px-4 md:px-8 w-full">
+      <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {clouds.map((cloud, index) => (
           <Feature key={cloud.title} {...cloud} index={index} />
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Automation &amp; Testing
         </h2>
       </div>
-      <div className="flex flex-wrap relative z-10 py-5 px-4 md:px-8 w-full">
+      <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {automations.map((automation, index) => (
           <Feature key={automation.title} {...automation} index={index} />
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Design Tools
         </h2>
       </div>
-      <div className="flex flex-wrap relative z-10 py-5 px-4 md:px-8 w-full">
+      <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {designs.map((design, index) => (
           <Feature key={design.title} {...design} index={index} />
         ))}
@@ -236,7 +236,7 @@ const Feature = ({
   index: number;
 }) => {
   return (
-    <div className={cn("flex flex-col py-10 relative group/feature ")}>
+    <div className={cn("flex flex-col py-5 lg:py-10 relative group/feature ")}>
       {index < 4 && (
         <div className="opacity-0 group-hover/feature:opacity-70 transition duration-200 absolute inset-0 h-full w-full border-l-2 border-b-2 rounded-lg border-slate-900 bg-gradient-to-t from-slate-700 to-transparent pointer-events-none" />
       )}

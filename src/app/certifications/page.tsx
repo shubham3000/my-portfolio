@@ -55,11 +55,11 @@ export default function page() {
   return (
     <div className="flex flex-col">
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h2 className="text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           Certified Excellence
         </h2>
       </div>
-      <div className="w-full mx-auto px-8">
+      <div className="w-full lg:mx-auto lg:px-8">
         <HoverEffect items={projects} />
       </div>
     </div>

@@ -80,7 +80,7 @@ export function PortfolioSidebar() {
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row dark:border-neutral-700 overflow-hidden h-screen"
+        "flex flex-col md:flex-row overflow-hidden lg:h-screen absolute lg:relative z-40"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
