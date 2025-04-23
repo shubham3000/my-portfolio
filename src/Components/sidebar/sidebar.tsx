@@ -44,13 +44,13 @@ export function PortfolioSidebar() {
         <IconFiles className="text-white h-5 w-5 flex-shrink-0" />
       ),
     },
-    // {
-    //   label: "Freelancing",
-    //   href: "/freelance",
-    //   icon: (
-    //     <IconCircleDottedLetterF className="text-white h-5 w-5 flex-shrink-0" />
-    //   ),
-    // },
+    {
+      label: "Freelancing",
+      href: "/freelance",
+      icon: (
+        <IconCircleDottedLetterF className="text-white h-5 w-5 flex-shrink-0" />
+      ),
+    },
     {
       label: "Skills",
       href: "/skills",
@@ -97,7 +97,7 @@ export function PortfolioSidebar() {
             <SidebarLink
               link={{
                 label: "Shubham Sadhu",
-                href: "/about",
+                href: "/home",
                 icon: (
                   <Image
                     src={ShubhamAvatar}
