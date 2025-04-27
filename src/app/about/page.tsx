@@ -24,32 +24,36 @@ export default function page() {
             className="text-lg text-white"
           >
             Hey there! I&apos;m Shubham Sadhu, a passionate Software Developer
-            based in Bengaluru. I specialize in crafting clean, efficient, and
-            scalable web applications with a focus on frontend development and
-            automation. Currently, I work at TCS, where I build dashboards and
-            automate workflows using technologies like React.js, Azure,
-            Selenium, and Python.
+            based in Bengaluru.
+            <br />
+            At Tata Consultancy Services (TCS), I&apos;ve been shaping powerful
+            digital experiences since July 2022. I work on major projects across
+            Dashboard Development and Automation. Using React.js, I build
+            modular, responsive user interfaces that boosted usability by 25%
+            and reduced load times by 35%. I integrate real-time data using
+            Azure services, implement secure user authentication with MSAL, and
+            optimize app performance through Redux and MVC architecture. My
+            focus is always on creating seamless, accessible, and
+            high-performing applications.
             <br />
             <br />
-            I enjoy turning complex problems into elegant solutions. Whether
-            it&apos;s improving load times, creating reusable UI components, or
-            automating tedious tasks—I&apos;m always looking for ways to make
-            systems more efficient and user-friendly.
+            On the automation side, I streamlined regression testing by
+            automating it with Selenium and Automation Anywhere (A360), cutting
+            manual effort by 80%. I developed Python scripts to automate data
+            processing, optimized database queries to speed up reporting by 60%,
+            and built Azure Logic Apps and DevOps pipelines to make deployments
+            faster and more reliable.
             <br />
             <br />
-            What excites me the most is building things that people actually
-            use—from internal dashboards that streamline business operations to
-            side projects like Your Planner, which combines event planning with
-            social media features.
+            Before TCS, I interned as a Frontend Developer at Atorvis Pvt. Ltd.,
+            where I developed responsive landing pages, improved site
+            performance by 40%, built an admin panel, and collaborated closely
+            with backend teams. This experience taught me how to create
+            user-first designs while maintaining technical excellence.
             <br />
             <br />
-            I&apos;m a lifelong learner who thrives on feedback and
-            collaboration. When I&apos;m not coding, you&apos;ll probably find
-            me exploring new tech on GitHub, solving algorithm problems on
-            LeetCode, or refining my design ideas on Figma.
-            <br />
-            <br />
-            Let&apos;s build something awesome together! 🚀
+            Every project I work on, I aim to bring not just code — but real
+            value, efficiency, and innovation.
           </motion.p>
         </div>
       </div>
