@@ -40,7 +40,7 @@ export const Timeline = ({
 
   return (
     <div className="w-full font-sans md:px-10" ref={containerRef}>
-      <div className="max-w-7xl mx-auto py-10 px-4 md:px-8 lg:px-10">
+      <div className="max-w-7xl mx-auto pt-14 md:pt-0 py-10 px-4 md:px-8 lg:px-10">
         <motion.h2
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}

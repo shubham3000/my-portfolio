@@ -6,7 +6,7 @@ export default function page() {
   return (
     <div className="w-full font-sans md:px-10">
       <div className="flex flex-col">
-        <div className="max-w-7xl py-10 px-4 md:px-8">
+        <div className="max-w-7xl pt-14 md:pt-0 py-10 px-4 md:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -18,7 +18,7 @@ export default function page() {
         </div>
         <div className="w-full px-8">
           <motion.p
-            initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
+            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 2, ease: "easeOut" }}
             className="text-lg text-white"
