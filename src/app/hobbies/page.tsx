@@ -93,7 +93,7 @@ export default function page() {
                 ease: "easeOut",
               }}
               className={`
-        ${pic === Pic6 ? "w-full h-60 lg:h-96 lg:col-span-2" : "w-96 h-96"}
+        ${pic === Pic6 ? " h-60 lg:h-96 md:col-span-2" : "w-[22rem] md:w-96 h-[22rem] md:h-96"}
         rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20
       `}
             >
