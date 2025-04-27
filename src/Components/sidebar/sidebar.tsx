@@ -12,8 +12,6 @@ import {
   IconFiles,
   IconCircleDottedLetterF,
 } from "@tabler/icons-react";
-import Link from "next/link";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/utils/cn";
 import ShubhamAvatar from "@/assests/shubhamavatar.jpg";
@@ -80,13 +78,12 @@ export function PortfolioSidebar() {
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row overflow-hidden lg:h-screen absolute lg:relative z-40"
+        "flex flex-col md:flex-row overflow-hidden lg:h-screen absolute lg:relative z-40 w-full md:w-fit"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10 rounded-md ">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden z-20">
-            {/* {open ? <Logo /> : <LogoIcon />} */}
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} />

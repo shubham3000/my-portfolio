@@ -4,6 +4,8 @@ import Link, { LinkProps } from "next/link";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconMenu2, IconX } from "@tabler/icons-react";
+import ShubhamAvatar from "@/assests/shubhamavatar.jpg";
+import Image from "next/image";
 
 interface Links {
   label: string;
@@ -115,15 +117,26 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between w-full"
+          "h-10 px-4 py-8 flex flex-row md:hidden items-center justify-between w-full"
         )}
         {...props}
       >
-        <div className="flex justify-end z-20 w-full">
+        <div className="flex z-20 w-full">
           <IconMenu2
-            className="text-white"
+            className="text-white w-9 h-12"
             onClick={() => setOpen(!open)}
           />
+        </div>
+        <div>
+          <Link href={"/home"}>
+            <Image
+              src={ShubhamAvatar}
+              className="h-8 w-9 rounded-full"
+              width={50}
+              height={50}
+              alt="Avatar"
+            />
+          </Link>
         </div>
         <AnimatePresence>
           {open && (

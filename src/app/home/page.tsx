@@ -91,7 +91,7 @@ export default function page() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="w-96 h-80 lg:w-80 lg:h-1/2 rounded-lg shadow-[0_0_24px_5px_rgba(59,130,246,0.5)]"
+                className="w-80 h-80 lg:h-1/2 rounded-lg shadow-[0_0_24px_5px_rgba(59,130,246,0.5)]"
               >
                 <Image
                   src={ShubhamProfile}

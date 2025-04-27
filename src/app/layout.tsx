@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex">
+        <div className="block md:flex">
           <PortfolioSidebar />
           <Dashboard>{children}</Dashboard>
         </div>
