@@ -1,3 +1,6 @@
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
 import { HoverEffect } from "@/Components/ui/card-hover-effect";
 import Azure from "@/assests/certificate/Azure.png";
 import RPA from "@/assests/certificate/RPA.jpg";
@@ -50,14 +53,18 @@ const projects = [
   },
 ];
 
-
 export default function page() {
   return (
     <div className="flex flex-col">
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
           Certified Excellence
-        </h2>
+        </motion.h2>
       </div>
       <div className="w-full lg:mx-auto lg:px-8">
         <HoverEffect items={projects} />

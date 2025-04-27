@@ -12,7 +12,13 @@ interface TimelineEntry {
   content: React.ReactNode;
 }
 
-export const Timeline = ({ data, headerTitle }: { data: TimelineEntry[]; headerTitle: string }) => {
+export const Timeline = ({
+  data,
+  headerTitle,
+}: {
+  data: TimelineEntry[];
+  headerTitle: string;
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -33,14 +39,16 @@ export const Timeline = ({ data, headerTitle }: { data: TimelineEntry[]; headerT
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div
-      className="w-full font-sans md:px-10"
-      ref={containerRef}
-    >
+    <div className="w-full font-sans md:px-10" ref={containerRef}>
       <div className="max-w-7xl mx-auto py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
-         {headerTitle}
-        </h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 font-sans font-bold"
+        >
+          {headerTitle}
+        </motion.h2>
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">

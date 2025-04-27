@@ -1,4 +1,6 @@
-import React from 'react'
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
 import ShubhamProfile from "@/assests/ShubhamImage.jpg";
 import Image from "next/image";
 import { BackgroundLines } from "@/Components/ui/background-lines";
@@ -81,55 +83,90 @@ const techStacks = [
 export default function page() {
   return (
     <div>
-        <BackgroundLines>
-          <div className=" w-full rounded-md relative antialiased">
-            <div className="max-w-2xl mx-auto p-4 space-y-4">
-              <div className="flex justify-center">
+      <BackgroundLines>
+        <div className=" w-full rounded-md relative antialiased">
+          <div className="max-w-2xl mx-auto p-4 space-y-4">
+            <div className="flex justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="w-96 h-80 lg:w-80 lg:h-1/2 rounded-lg shadow-[0_0_24px_5px_rgba(59,130,246,0.5)]"
+              >
                 <Image
                   src={ShubhamProfile}
-                  className="w-96 h-80 lg:w-1/2 Lg:h-1/2 rounded-lg"
+                  className="w-full h-full object-cover rounded-lg"
                   alt="Avatar"
                 />
-              </div>
-              <h1 className="relative z-10 text-4xl md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
-                Shubham Sadhu
-              </h1>
-              <div className="text-neutral-500 max-w-lg mx-auto my-2 relative z-10 flex justify-center space-x-6">
-                {socials.map((item, key) => (
-                  <div key={key}>
-                    <Link
-                      href={item.href}
-                      rel="noopener noreferrer"
-                      target="__blank"
-                      className="relative group flex items-center justify-center"
-                    >
-                      <item.icon className="text-white h-6 lg:h-8 w-6 lg:w-8 flex-shrink-0 hover:text-purple-500" />
-                      <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
-                        {item.title}
-                        <div className="absolute left-1/2 top-full -translate-x-1/2 w-2 h-2 bg-gray-600 rotate-45"></div>
-                      </div>
-                    </Link>
-                  </div>
+              </motion.div>
+            </div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="relative z-10 text-4xl md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold"
+            >
+              Shubham Sadhu
+            </motion.h1>
+            <div className="text-neutral-500 max-w-lg mx-auto my-2 relative z-10 flex justify-center space-x-6">
+              {socials.map((item, key) => (
+                <motion.div
+                  key={key}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: key * 0.2,
+                    duration: 0.5,
+                    ease: "easeOut",
+                  }}
+                >
+                  <Link
+                    href={item.href}
+                    rel="noopener noreferrer"
+                    target="__blank"
+                    className="relative group flex items-center justify-center"
+                  >
+                    <item.icon className="text-white h-6 lg:h-8 w-6 lg:w-8 flex-shrink-0 hover:text-purple-500" />
+                    <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
+                      {item.title}
+                      <div className="absolute left-1/2 top-full -translate-x-1/2 w-2 h-2 bg-gray-600 rotate-45"></div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+            <div className="flex justify-center space-x-4">
+              <motion.p
+                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="text-neutral-500 my-2 text-sm lg:text-lg"
+              >
+                Tech Stacks:
+              </motion.p>
+              <div className="flex items-center justify-center">
+                {techStacks.map((item, key) => (
+                  <motion.div
+                    key={key}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      delay: key * 0.2,
+                      duration: 0.5,
+                      ease: "easeOut",
+                    }}
+                    className="relative group flex items-center justify-center mr-4"
+                  >
+                    <item.icon className="text-white h-6 lg:h-8 w-6 lg:w-8 flex-shrink-0 hover:text-purple-500" />
+                    <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
+                      {item.title}
+                      <div className="absolute left-1/2 top-full -translate-x-1/2 w-2 h-2 bg-gray-600 rotate-45"></div>
+                    </div>
+                  </motion.div>
                 ))}
               </div>
-              <div className="flex justify-center space-x-4">
-                <p className="text-neutral-500 my-2 text-sm lg:text-lg">Tech Stacks:</p>
-                <div className="flex items-center justify-center">
-                  {techStacks.map((item, key) => (
-                    <div
-                      key={key}
-                      className="relative group flex items-center justify-center mr-4"
-                    >
-                      <item.icon className="text-white h-6 lg:h-8 w-6 lg:w-8 flex-shrink-0 hover:text-purple-500" />
-                      <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
-                        {item.title}
-                        <div className="absolute left-1/2 top-full -translate-x-1/2 w-2 h-2 bg-gray-600 rotate-45"></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {/* <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
+            </div>
+            {/* <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
               Creative and detail-oriented frontend developer with strong design
               and integration skills paired with intuitive problem-solving
               abilities. Proficient in ReactJS and experienced in leveraging
@@ -139,9 +176,9 @@ export default function page() {
               technical solutions. Seeking opportunities to contribute expertise
               to a forward-thinking technology-driven organization.
             </p> */}
-            </div>
           </div>
-        </BackgroundLines>
+        </div>
+      </BackgroundLines>
     </div>
-  )
+  );
 }

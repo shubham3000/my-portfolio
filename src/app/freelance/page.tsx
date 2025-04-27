@@ -1,6 +1,4 @@
-import { LinkPreview } from "@/Components/ui/link-preview";
 import { Timeline } from "@/Components/ui/timeline";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -25,6 +23,7 @@ export default function page() {
                 href={"https://z21.ventures"}
                 className=" text-white hover:text-blue-500 underline"
                 target="__blank"
+                title="https://z21.ventures"
               >
                 [ URL ]
               </Link>
@@ -99,6 +98,7 @@ export default function page() {
                 href={"https://dgtg.in/"}
                 className=" text-white hover:text-blue-500 underline"
                 target="__blank"
+                title="https://dgtg.in/"
               >
                 [ URL ]
               </Link>

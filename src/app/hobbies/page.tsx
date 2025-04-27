@@ -1,3 +1,6 @@
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { IconChefHat, IconCricket, IconPencilBolt } from "@tabler/icons-react";
 import Image from "next/image";
@@ -32,77 +35,77 @@ export default function page() {
   return (
     <div className="flex flex-col">
       <div className="max-w-7xl py-10 px-4 md:px-8">
-        <h2 className="text-3xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
           Ctrl + Me Time
-        </h2>
+        </motion.h2>
       </div>
       <div className="flex flex-wrap relative z-10 py-5 px-4 md:px-8 w-full">
         {hobbies.map((hobbie, index) => (
-          <Feature key={hobbie.title} {...hobbie} index={index} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <Feature key={hobbie.title} {...hobbie} index={index} />
+          </motion.div>
         ))}
       </div>
       <div className="px-4 md:px-8">
-      <h2 className="text-3xl md:text-3xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-3xl md:text-3xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
           Gallery
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full ">
-            <Image
-              src={Pic1}
-              alt="pic1"
-              className="w-96 h-96 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-            <Image
-              src={Pic8}
-              alt="pic1"
-              className="w-96 h-96 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-            <Image
-              src={Pic2}
-              alt="pic1"
-              className="w-96 h-96 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-            <Image
-              src={Pic9}
-              alt="pic1"
-              className="w-96 h-96 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-            <Image
-              src={Pic5}
-              alt="pic1"
-              className="w-96 h-96 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-            <Image
-              src={Pic7}
-              alt="pic1"
-              className="w-96 h-96 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-            <Image
-              src={Pic6}
-              alt="pic1"
-              className="w-full h-60 lg:h-96 lg:col-span-2 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-            <Image
-              src={Pic3}
-              alt="pic1"
-              className="w-96 h-96 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-            <Image
-              src={Pic4}
-              alt="pic1"
-              className="w-96 h-96 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-            <Image
-              src={Pic10}
-              alt="pic1"
-              className="w-96 h-96 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-            <Image
-              src={Pic11}
-              alt="pic1"
-              className="w-96 h-96 rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20"
-            />
-          </div>
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+          {[
+            Pic1,
+            Pic8,
+            Pic2,
+            Pic9,
+            Pic5,
+            Pic7,
+            Pic6,
+            Pic3,
+            Pic4,
+            Pic10,
+            Pic11,
+          ].map((pic, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: index * 0.15,
+                duration: 0.5,
+                ease: "easeOut",
+              }}
+              className={`
+        ${pic === Pic6 ? "w-full h-60 lg:h-96 lg:col-span-2" : "w-96 h-96"}
+        rounded-2xl p-2 overflow-hidden bg-gray-950 border border-transparent relative z-20
+      `}
+            >
+              <Image
+                src={pic}
+                alt="pic"
+                className="w-full h-full object-cover rounded-2xl"
+              />
+            </motion.div>
+          ))}
         </div>
+      </div>
     </div>
   );
 }

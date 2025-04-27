@@ -1,3 +1,6 @@
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import {
   IconBrandPython,
@@ -18,6 +21,7 @@ import {
   IconLetterSSmall,
   IconLetterASmall,
   IconBrandFigma,
+  IconBrandFramer,
 } from "@tabler/icons-react";
 
 export default function page() {
@@ -76,6 +80,12 @@ export default function page() {
       description:
         "Lightning-fast front-end build tool and dev server optimized for modern frameworks.",
       icon: <IconBrandVite />,
+    },
+    {
+      title: "Framer (Framer Motion)",
+      description:
+        "Framer Motion is a popular JavaScript animation library for React that enables smooth, interactive animations and transitions with minimal effort.",
+      icon: <IconBrandFramer />,
     },
   ];
 
@@ -151,73 +161,185 @@ export default function page() {
   return (
     <div className="flex flex-col">
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
           Programming Languages
-        </h2>
+        </motion.h2>
       </div>
       <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {languages.map((language, index) => (
-          <Feature key={language.title} {...language} index={index} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <Feature key={language.title} {...language} index={index} />
+          </motion.div>
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
           Frontend Technologies
-        </h2>
+        </motion.h2>
       </div>
       <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {frontends.map((frontend, index) => (
-          <Feature key={frontend.title} {...frontend} index={index} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <Feature key={frontend.title} {...frontend} index={index} />
+          </motion.div>
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
           Backend &amp; Dev Tools
-        </h2>
+        </motion.h2>
       </div>
       <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {backends.map((backend, index) => (
-          <Feature key={backend.title} {...backend} index={index} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <Feature key={backend.title} {...backend} index={index} />
+          </motion.div>
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
           Databases &amp; DB Tools
-        </h2>
+        </motion.h2>
       </div>
       <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {datbases.map((datbase, index) => (
-          <Feature key={datbase.title} {...datbase} index={index} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <Feature key={datbase.title} {...datbase} index={index} />
+          </motion.div>
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
           Cloud &amp; Deployment
-        </h2>
+        </motion.h2>
       </div>
       <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {clouds.map((cloud, index) => (
-          <Feature key={cloud.title} {...cloud} index={index} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <Feature key={cloud.title} {...cloud} index={index} />
+          </motion.div>
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
           Automation &amp; Testing
-        </h2>
+        </motion.h2>
       </div>
       <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {automations.map((automation, index) => (
-          <Feature key={automation.title} {...automation} index={index} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <Feature key={automation.title} {...automation} index={index} />
+          </motion.div>
         ))}
       </div>
       <div className="max-w-7xl py-10 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
           Design Tools
-        </h2>
+        </motion.h2>
       </div>
       <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
         {designs.map((design, index) => (
-          <Feature key={design.title} {...design} index={index} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <Feature key={design.title} {...design} index={index} />
+          </motion.div>
         ))}
       </div>
     </div>
