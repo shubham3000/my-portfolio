@@ -4,10 +4,10 @@ import { PortfolioSidebar } from "@/Components/sidebar/sidebar";
 import Dashboard from "@/Components/Dashboard/dashboard";
 import { Inter } from "next/font/google";
 
-// export const metadata: Metadata = {
-//   title: "Shubham's Protfolio",
-//   description: "I am a Frontend Developer.",
-// };
+export const metadata: Metadata = {
+  title: "Shubham's Portfolio",
+  description: "I am a Frontend Developer.",
+};
 
 const inter = Inter({ subsets: ["latin"] });
 

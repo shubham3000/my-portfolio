@@ -38,6 +38,9 @@ Key highlights:
 ## 📦 Folder Structure
 
 ```
+public/
+├── assests/
+├── resume/
 src/
 ├── app/
 │   ├── globals.css
@@ -66,6 +69,16 @@ src/
          ├── link-preview.tsx
          ├── sidebar.tsx
          └── timeline.tsx
+.eslintrc.json
+.gitignore
+next-env.d.ts/
+next.config.mjs/
+package-lock.json
+package.json
+postcss.config.mjs
+README.md
+tailwind.config.ts
+tsconfig.json
 ```
 
 ## 🚀 Getting Started
