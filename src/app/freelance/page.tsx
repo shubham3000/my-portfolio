@@ -1,19 +1,41 @@
+"use client";
 import { Timeline } from "@/Components/ui/timeline";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { Hearts } from "react-loader-spinner";
 
-export default function page() {
+export default function Page() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const data = [
     {
       title: "z21Ventures",
       content: (
         <div>
-          <iframe
-            src="https://z21.ventures"
-            className="w-72 lg:w-96 h-[26rem] overflow-hidden"
-            title="Live site preview"
-            scrolling="no"
-          />
+          <div className="relative w-72 lg:w-96 h-[26rem]">
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black">
+                <Hearts
+                  height="80"
+                  width="80"
+                  color="#da696e"
+                  ariaLabel="hearts-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              </div>
+            )}
+            <iframe
+              src="https://z21.ventures"
+              className={`w-full h-full overflow-hidden ${
+                isLoading ? "invisible" : "visible"
+              }`}
+              title="Live site preview"
+              scrolling="no"
+              onLoad={() => setIsLoading(false)}
+            />
+          </div>
           <div>
             <p className="text-white text-lg lg:text-2xl font-semibold mt-2 mb-4">
               z21 Ventures is an early-stage VC firm backing innovative startups
@@ -82,12 +104,30 @@ export default function page() {
       title: "Dgtg",
       content: (
         <div>
-          <iframe
-            src="https://dgtg.in/"
-            className="w-72 lg:w-96 h-[26rem] overflow-hidden"
-            title="Live site preview"
-            scrolling="no"
-          />
+          <div className="relative w-72 lg:w-96 h-[26rem]">
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black">
+                <Hearts
+                  height="80"
+                  width="80"
+                  color="#da696e"
+                  ariaLabel="hearts-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              </div>
+            )}
+            <iframe
+              src="https://dgtg.in/"
+              className={`w-full h-full overflow-hidden ${
+                isLoading ? "invisible" : "visible"
+              }`}
+              title="Live site preview"
+              scrolling="no"
+              onLoad={() => setIsLoading(false)}
+            />
+          </div>
           <div>
             <p className="text-white text-lg lg:text-2xl font-semibold mt-2 mb-4">
               DGTG Marketing & Retail Private Limited is a Bengaluru-based
