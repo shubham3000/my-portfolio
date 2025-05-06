@@ -7,10 +7,10 @@ import {
   IconBriefcaseFilled,
   IconUserBolt,
   IconDeviceGamepad2,
-  IconPhoneDone,
   IconCodeCircle,
   IconFiles,
   IconCircleDottedLetterF,
+  IconMail,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import { cn } from "@/utils/cn";
@@ -66,13 +66,13 @@ export function PortfolioSidebar() {
         <IconDeviceGamepad2 className="text-white h-5 w-5 flex-shrink-0" />
       ),
     },
-    // {
-    //   label: "Contact Me",
-    //   href: "#",
-    //   icon: (
-    //     <IconPhoneDone className="text-white h-5 w-5 flex-shrink-0" />
-    //   ),
-    // },
+    {
+      label: "Contact Me",
+      href: "/contactme",
+      icon: (
+        <IconMail className="text-white h-5 w-5 flex-shrink-0" />
+      ),
+    },
   ];
   const [open, setOpen] = useState(false);
   return (
