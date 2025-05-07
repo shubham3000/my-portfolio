@@ -85,7 +85,7 @@ export default function page() {
     <div>
       <BackgroundLines>
         <div className=" w-full rounded-md relative antialiased">
-          <div className="max-w-2xl mx-auto pt-20 p-4 space-y-4">
+          <div className="max-w-2xl mx-auto pt-4 md:pt-20 p-4 space-y-4">
             <div className="flex justify-center">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
