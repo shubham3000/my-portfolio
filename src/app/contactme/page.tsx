@@ -35,8 +35,8 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="pt-14 md:pt-0 pb-0 md:pb-10 px-4 md:px-8">
+    <div className="flex flex-col justify-center items-center">
+      <div className="pt-14 md:pt-20 pb-10">
         <motion.h2
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}

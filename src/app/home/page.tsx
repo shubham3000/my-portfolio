@@ -85,13 +85,13 @@ export default function page() {
     <div>
       <BackgroundLines>
         <div className=" w-full rounded-md relative antialiased">
-          <div className="max-w-2xl mx-auto p-4 space-y-4">
+          <div className="max-w-2xl mx-auto pt-20 p-4 space-y-4">
             <div className="flex justify-center">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="w-80 h-80 lg:h-1/2 rounded-lg shadow-[0_0_24px_5px_rgba(59,130,246,0.5)]"
+                className="w-80 h-80 lg:h-1/2 rounded-lg shadow-[0_0_20px_5px_rgb(89,103,126,0.5)]"
               >
                 <Image
                   src={ShubhamProfile}
