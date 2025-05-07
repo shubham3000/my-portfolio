@@ -1,21 +1,21 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import BGIMG from "@/assests/pexels.jpg";
 
 export default function dashboard({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{ children: React.ReactNode }>) {  
   return (
     <div className="flex flex-1">
       <div className="relative w-full h-screen">
         {/* Overlay */}
         <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
         <div
-          className={`p-2 md:p-10 rounded-tl-2xl lg:border border-neutral-200 flex flex-col gap-2 flex-1 w-full h-screen overflow-y-scroll`}
+          className="p-2 md:p-10 rounded-tl-2xl lg:border border-neutral-200 flex flex-col gap-2 flex-1 w-full h-screen overflow-y-scroll md:bg-cover md:bg-center md:bg-no-repeat"
           style={{
-            backgroundImage: `url(${BGIMG.src})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
+            backgroundImage: typeof window !== "undefined" && window.innerWidth >= 768
+              ? "none"
+              : `url(${BGIMG.src})`,
           }}
         >
           {/* <div className="flex gap-2">
