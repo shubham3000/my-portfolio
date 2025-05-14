@@ -58,10 +58,10 @@ const techStacks = [
     title: "ReactJs",
     icon: IconBrandReact,
   },
-  {
-    title: "NodeJs",
-    icon: IconBrandNodejs,
-  },
+  // {
+  //   title: "NodeJs",
+  //   icon: IconBrandNodejs,
+  // },
   {
     title: "NextJs",
     icon: IconBrandNextjs,

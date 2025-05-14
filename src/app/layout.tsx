@@ -3,6 +3,7 @@ import "./globals.css";
 import { PortfolioSidebar } from "@/Components/sidebar/sidebar";
 import Dashboard from "@/Components/Dashboard/dashboard";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Shubham's Portfolio",
@@ -21,7 +22,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="block md:flex">
           <PortfolioSidebar />
-          <Dashboard>{children}</Dashboard>
+          <Dashboard>
+            {children}
+            <Analytics />
+          </Dashboard>
         </div>
       </body>
     </html>
