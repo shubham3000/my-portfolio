@@ -23,3 +23,20 @@ body{
     }
   }
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+    background: #8d8c8c;
+    border-radius: 5px;
+    /* display: none; */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #efeff1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ea7c5b;
+}
+

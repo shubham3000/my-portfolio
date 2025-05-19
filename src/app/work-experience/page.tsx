@@ -18,7 +18,7 @@ export default function page() {
             </p>
             <ul className="list-disc ml-6">
               <li className="text-white text-sm font-normal mb-4">
-                Built <b>React.js</b> interfaces, enhancing usability by 25% and
+                Built <b>ReactJs</b> interfaces, enhancing usability by 25% and
                 accelerating development by 30% using modular components.
               </li>
               <li className="text-white text-sm font-normal mb-4">
