@@ -38,7 +38,7 @@ const socials = [
   },
   {
     title: "Shubhamsadhu02@gmail.com",
-    href: "mailto:shubhamsadhu02@gmail.com",
+    href: "/contactme",
     icon: IconMail,
   },
   {
