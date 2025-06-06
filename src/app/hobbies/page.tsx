@@ -15,6 +15,7 @@ import Pic8 from "@/assests/hobbies/pic8.jpg";
 import Pic9 from "@/assests/hobbies/pic9.jpg";
 import Pic10 from "@/assests/hobbies/pic10.jpg";
 import Pic11 from "@/assests/hobbies/pic11.jpg";
+import Pic12 from "@/assests/hobbies/pic12.jpg";
 
 export default function page() {
   const hobbies = [
@@ -71,7 +72,7 @@ export default function page() {
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
           {[
-            Pic1,
+            Pic4,
             Pic8,
             Pic2,
             Pic9,
@@ -79,8 +80,8 @@ export default function page() {
             Pic7,
             Pic6,
             Pic3,
-            Pic4,
-            Pic10,
+            Pic1,
+            Pic12,
             Pic11,
           ].map((pic, index) => (
             <motion.div
