@@ -22,6 +22,10 @@ import {
   IconLetterASmall,
   IconBrandFigma,
   IconBrandFramer,
+  IconParkingCircle,
+  IconFileSpreadsheet,
+  IconReportAnalytics,
+  IconBrandDjango,
 } from "@tabler/icons-react";
 
 export default function page() {
@@ -108,6 +112,12 @@ export default function page() {
         "API testing tool for sending, inspecting, and automating HTTP requests.",
       icon: <IconCircleLetterPFilled />,
     },
+    {
+      title: "Django",
+      description:
+        "High-level Python web framework for building secure and maintainable web applications.",
+      icon: <IconBrandDjango />,
+    },
   ];
 
   const datbases = [
@@ -155,6 +165,45 @@ export default function page() {
       description:
         "Collaborative design tool used for UI/UX wireframes, prototypes, and mockups.",
       icon: <IconBrandFigma />,
+    },
+  ];
+
+  const libraries = [
+    {
+      title: "Pandas",
+      description:
+        "It is a Python library. It is used to analyze data. It provides data structures and functions needed to work with structured data seamlessly.",
+      icon: <IconParkingCircle />,
+    },
+    {
+      title: "Openpyxl",
+      description:
+        "It is a Python library. It is used to read and write Excel files (XLSX) in Python.",
+      icon: <IconFileSpreadsheet />,
+    },
+    {
+      title: "Selenium",
+      description:
+        "Tool for automating web browser interactions and UI testing.",
+      icon: <IconLetterSSmall />,
+    },
+    {
+      title: "Oracledb",
+      description:
+        "It is a Python library. It is used to connect to Oracle databases and execute SQL queries.",
+      icon: <IconDatabase />,
+    },
+    {
+      title: "Postgresql",
+      description:
+        "It is a Python library. It is used to connect to PostgreSQL databases and execute SQL queries.",
+      icon: <IconDatabase />,
+    },
+    {
+      title: "Logging",
+      description:
+        "It is a Python library. It is used to log messages from Python applications, providing a way to track events and errors.",
+      icon: <IconReportAnalytics />,
     },
   ];
 
@@ -316,6 +365,34 @@ export default function page() {
           </motion.div>
         ))}
       </div>
+
+      <div className="max-w-7xl pt-10 pb-0 md:pb-10 px-4 md:px-8 lg:px-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-2xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+        >
+          Python Libraries
+        </motion.h2>
+      </div>
+      <div className="flex flex-wrap relative z-10 px-4 md:px-8 w-full">
+        {libraries.map((libraries, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <Feature key={libraries.title} {...libraries} index={index} />
+          </motion.div>
+        ))}
+      </div>
+
       <div className="max-w-7xl pt-10 pb-0 md:pb-10 px-4 md:px-8 lg:px-10">
         <motion.h2
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}

@@ -59,11 +59,11 @@ export default function page() {
                 Head of Robotics Club
               </p>
               <ul className="list-disc ml-6">
-                <li className="text-white text-sm font-normal mb-4">
+                <li className="text-white text-base font-normal mb-4">
                   Guided a team in developing and programming robots to compete
                   in inter-college robotics events and exhibitions.
                 </li>
-                <li className="text-white text-sm font-normal mb-4">
+                <li className="text-white text-base font-normal mb-4">
                   Oversaw project planning, team coordination, and hands-on
                   development of robotic prototypes.
                 </li>
@@ -74,12 +74,12 @@ export default function page() {
                 Organized Annual Tech Fest, Techtrix
               </p>
               <ul className="list-disc ml-6">
-                <li className="text-white text-sm font-normal mb-4">
+                <li className="text-white text-base font-normal mb-4">
                   Spearheaded the planning and execution of the college’s
                   flagship tech festival, attracting 1000+ participants and 10+
                   colleges.
                 </li>
-                <li className="text-white text-sm font-normal mb-4">
+                <li className="text-white text-base font-normal mb-4">
                   Managed event logistics, sponsorship outreach, and technical
                   events including hackathons, robot wars, and workshops.
                 </li>
@@ -90,16 +90,16 @@ export default function page() {
                 Participated in Inter-College Robotics Competitions
               </p>
               <ul className="list-disc ml-6">
-                <li className="text-white text-sm font-normal mb-4">
+                <li className="text-white text-base font-normal mb-4">
                   Represented college in various robotics events and
                   competitions focused on innovation, problem-solving, and
                   engineering skills.
                 </li>
-                <li className="text-white text-sm font-normal mb-4">
+                <li className="text-white text-base font-normal mb-4">
                   Helped mentor junior members in basic robotics concepts and
                   competition preparation.
                 </li>
-                <li className="text-white text-sm font-normal mb-4">
+                <li className="text-white text-base font-normal mb-4">
                   Attended robotics workshops and training sessions to enhance
                   knowledge of microcontrollers and automation.
                 </li>
@@ -117,7 +117,7 @@ export default function page() {
             Senior Secondary School
           </p>
           <p className="text-white text-sm font-normal mb-4">
-            Dav Public School, Bokaro, Jharkhand
+            DAV Public School, Bokaro, Jharkhand
           </p>
           <p className="text-white text-xs md:text-sm font-normal mb-4">
             Percentage: 79%
