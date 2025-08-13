@@ -60,6 +60,54 @@ export default function page() {
       ),
     },
     {
+      title: "Feb 2022",
+      content: (
+        <div>
+          <p className="text-white text-2xl font-semibold mb-4">
+            Snake game | &nbsp;
+            <LinkPreview
+              url="https://shubham3000.github.io/snake/"
+              className=" text-white hover:text-blue-500 underline"
+            >
+              [ URL ]
+            </LinkPreview>
+          </p>
+          <div>
+            <ul className="list-disc ml-6">
+              <li className="text-white text-base font-normal mb-4">
+                <b>Built with Core Web Technologies:</b> Developed using HTML,
+                CSS, and JavaScript.
+              </li>
+              <li className="text-white text-base font-normal mb-4">
+                <b>Real-time Gameplay:</b> Snake controlled via arrow keys, with
+                dynamic movement and grid-based logic.
+              </li>
+              <li className="text-white text-base font-normal mb-4">
+                <b>Score Tracking:</b> Displays real-time score and updates as
+                the snake consumes food.
+              </li>
+              <li className="text-white text-base font-normal mb-4">
+                <b>Game Over Logic:</b> Game ends when the snake collides with
+                itself or the walls.
+              </li>
+              <li className="text-white text-base font-normal mb-4">
+                <b>Responsive Design:</b> Clean, mobile-friendly interface
+                adaptable to different screen sizes.
+              </li>
+              <li className="text-white text-base font-normal mb-4">
+                <b>Smooth Animation:</b> Utilized CSS and JavaScript to create
+                fluid snake movement and transitions.
+              </li>
+              <li className="text-white text-base font-normal mb-4">
+                <b>Hands-on Learning:</b> Strengthened skills in DOM
+                manipulation, event handling, and game loop logic.
+              </li>
+            </ul>
+          </div>
+        </div>
+      ),
+    },
+    {
       title: "Jan 2022",
       content: (
         <div>
@@ -104,54 +152,6 @@ export default function page() {
               <li className="text-white text-base font-normal mb-4">
                 <b>Impact:</b> Helped deliver a more intuitive and time-saving solution
                 for healthcare professionals handling patient referrals.
-              </li>
-            </ul>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Feb 2022",
-      content: (
-        <div>
-          <p className="text-white text-2xl font-semibold mb-4">
-            Snake game | &nbsp;
-            <LinkPreview
-              url="https://shubham3000.github.io/snake/"
-              className=" text-white hover:text-blue-500 underline"
-            >
-              [ URL ]
-            </LinkPreview>
-          </p>
-          <div>
-            <ul className="list-disc ml-6">
-              <li className="text-white text-base font-normal mb-4">
-                <b>Built with Core Web Technologies:</b> Developed using HTML,
-                CSS, and JavaScript.
-              </li>
-              <li className="text-white text-base font-normal mb-4">
-                <b>Real-time Gameplay:</b> Snake controlled via arrow keys, with
-                dynamic movement and grid-based logic.
-              </li>
-              <li className="text-white text-base font-normal mb-4">
-                <b>Score Tracking:</b> Displays real-time score and updates as
-                the snake consumes food.
-              </li>
-              <li className="text-white text-base font-normal mb-4">
-                <b>Game Over Logic:</b> Game ends when the snake collides with
-                itself or the walls.
-              </li>
-              <li className="text-white text-base font-normal mb-4">
-                <b>Responsive Design:</b> Clean, mobile-friendly interface
-                adaptable to different screen sizes.
-              </li>
-              <li className="text-white text-base font-normal mb-4">
-                <b>Smooth Animation:</b> Utilized CSS and JavaScript to create
-                fluid snake movement and transitions.
-              </li>
-              <li className="text-white text-base font-normal mb-4">
-                <b>Hands-on Learning:</b> Strengthened skills in DOM
-                manipulation, event handling, and game loop logic.
               </li>
             </ul>
           </div>
