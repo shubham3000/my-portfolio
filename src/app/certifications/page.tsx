@@ -6,6 +6,7 @@ import Azure from "@/assests/certificate/Azure.png";
 import RPA from "@/assests/certificate/RPA.jpg";
 import Python from "@/assests/certificate/python.png";
 import SQL from "@/assests/certificate/sql.png";
+import SQLADV from "@/assests/certificate/SQL_ADVANCED.png";
 import Javascript from "@/assests/certificate/javascript.png";
 import A360 from "@/assests/certificate/A360.png";
 
@@ -43,6 +44,13 @@ const projects = [
       "Skills: SELECT, WHERE, ORDER BY, GROUP BY, HAVING, Aliases & expressions, Filtering and sorting data, COUNT(), SUM(), AVG(), MAX(), MIN(), DISTINCT, INSERT, UPDATE, DELETE, Joins",
     link: "https://www.hackerrank.com/certificates/4cbee30b85d8",
     image: SQL,
+  },
+   {
+    title: "SQL (Advanced)",
+    description:
+      "Skills: SELECT, WHERE, ORDER BY, GROUP BY, HAVING, Aliases & expressions, Filtering and sorting data, COUNT(), SUM(), AVG(), MAX(), MIN(), DISTINCT, INSERT, UPDATE, DELETE, Joins",
+    link: "https://www.hackerrank.com/certificates/bff697b540c4",
+    image: SQLADV,
   },
   {
     title: "JavaScript (Intermediate)",
