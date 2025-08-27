@@ -11,6 +11,7 @@ import {
   IconFiles,
   IconCircleDottedLetterF,
   IconMail,
+  IconRobot,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import { cn } from "@/utils/cn";
@@ -72,6 +73,11 @@ export function PortfolioSidebar() {
       icon: (
         <IconMail className="text-white h-5 w-5 flex-shrink-0" />
       ),
+    },
+    {
+      label: "Sam AI Chat Bot",
+      href: "/chatbot",
+      icon: <IconRobot className="text-white h-5 w-5 flex-shrink-0" />,
     },
   ];
   const [open, setOpen] = useState(false);
