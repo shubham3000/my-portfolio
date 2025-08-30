@@ -1,5 +1,6 @@
 {
-  "hello": "Hi there! 👋 How can I help you?",
+  "hello": "Hi there! 👋 I’m <b>Sam AI</b>, your chatbot assistant 🚀<br/>How can I help you?",
+  "hi": "Hi there! 👋 I’m <b>Sam AI</b>, your chatbot assistant 🚀<br/>How can I help you?",
   "who_are_you": "I’m <b>Sam AI</b>, your chatbot assistant 🚀",
   "bye": "<b>Goodbye!</b> Take care 👋",
 
