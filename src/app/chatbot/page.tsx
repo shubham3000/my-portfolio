@@ -15,8 +15,14 @@ interface Message {
 }
 
 const responseMapping: [RegExp, string][] = [
-  [/about me|describe yourself|introduction|professional summary|How many years of experience/i,"professional_summary",],
-  [/experience|work history|professional experience|what is your experience|work experience/i, "experience"],
+  [
+    /about me|describe yourself|introduction|professional summary|How many years of experience/i,
+    "professional_summary",
+  ],
+  [
+    /experience|work history|professional experience|what is your experience|work experience/i,
+    "experience",
+  ],
   [/projects|your project|my project|project/i, "projects"],
   [/education|qualification|degree|college|school/i, "education"],
   [/certification|certifications|courses/i, "certifications"],
@@ -60,7 +66,7 @@ export default function Page() {
             ? Object.entries(item)
                 .map(
                   ([k, v]) =>
-                    `<b>${k}:</b> ${Array.isArray(v) ? v.join(", ") : v}`
+                    `<b style='text-transform: capitalize;'>${k}:</b> ${Array.isArray(v) ? v.join(", ") : v}`
                 )
                 .join("<br/>")
             : item
@@ -82,7 +88,25 @@ export default function Page() {
         return (
           <SyntaxHighlighter
             key={index}
-            language="python"
+            language={(() => {
+              const match = part.match(/^\s*([a-zA-Z0-9+#-]+)\n/);
+              if (match) return match[1].toLowerCase();
+              if (
+                part.includes("import") ||
+                part.includes("const") ||
+                part.includes("let")
+              )
+                return "javascript";
+              if (
+                part.includes("def ") ||
+                part.includes("import ") ||
+                part.includes("print(")
+              )
+                return "python";
+              if (part.includes("#include") || part.includes("int main"))
+                return "cpp";
+              return "javascript";
+            })()}
             style={materialDark}
             wrapLines
           >
@@ -101,59 +125,59 @@ export default function Page() {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const value = e.target.value;
-  setInput(value);
+    const value = e.target.value;
+    setInput(value);
 
-  if (!value.trim()) {
-    setSuggestions([]);
-    return;
-  }
+    if (!value.trim()) {
+      setSuggestions([]);
+      return;
+    }
 
-  const lowerValue = value.toLowerCase();
-  const matchedKeys = responseMapping
-    .filter(([regex]) => regex.test(lowerValue))
-    .map(([, key]) => key)
-    .filter((key) => customResponses[key]);
+    const lowerValue = value.toLowerCase();
+    const matchedKeys = responseMapping
+      .filter(([regex]) => regex.test(lowerValue))
+      .map(([, key]) => key)
+      .filter((key) => customResponses[key]);
 
-  setSuggestions(matchedKeys.length > 0 ? matchedKeys : []);
-};
-
+    setSuggestions(matchedKeys.length > 0 ? matchedKeys : []);
+  };
 
   const handleSuggestionClick = (key: string) => {
-  const content = customResponses[key];
-  let formattedContent = "";
+    const content = customResponses[key];
+    let formattedContent = "";
 
-  if (Array.isArray(content)) formattedContent = formatArray(content);
-  else if (typeof content === "object")
-    formattedContent = Object.entries(content)
-      .map(([k, v]) => `<b>${k}:</b> ${v}`)
-      .join("<br/>");
-  else formattedContent = content;
+    if (Array.isArray(content)) formattedContent = formatArray(content);
+    else if (typeof content === "object")
+      formattedContent = Object.entries(content)
+        .map(
+          ([k, v]) => `<b style='text-transform: capitalize;'>${k}:</b> ${v}`
+        )
+        .join("<br/>");
+    else formattedContent = content;
 
-  // Add user message (simulating they typed the suggestion)
-  setMessages((prev) => [
-    ...prev,
-    { role: "user", content: key.replace(/_/g, " ") },
-  ]);
+    setMessages((prev) => [
+      ...prev,
+      { role: "user", content: key.replace(/_/g, " ") },
+    ]);
 
-  // Add bot message
-  setMessages((prev) => [...prev, { role: "bot", content: formattedContent }]);
+    setMessages((prev) => [
+      ...prev,
+      { role: "bot", content: formattedContent },
+    ]);
 
-  setSuggestions([]);
-  setInput("");
-};
-
+    setSuggestions([]);
+    setInput("");
+  };
 
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  if (e.key === "Enter") {
-    if (suggestions.length > 0) {
-      handleSuggestionClick(suggestions[0]); // select first suggestion
-    } else {
-      sendMessage(); // normal message
+    if (e.key === "Enter") {
+      if (suggestions.length > 0) {
+        handleSuggestionClick(suggestions[0]);
+      } else {
+        sendMessage();
+      }
     }
-  }
-};
-
+  };
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -258,7 +282,7 @@ export default function Page() {
                   className={`inline-block max-w-[70%] break-words p-3 rounded-lg ${
                     msg.role === "user"
                       ? "bg-gray-800 text-white"
-                      : "bg-gray-200 text-gray-900 capitalize"
+                      : "bg-gray-200 text-gray-900 normal-case"
                   }`}
                 >
                   {formatMessage(msg.content, msg.role)}

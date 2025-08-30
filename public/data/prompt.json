@@ -58,7 +58,7 @@
   ],
 
   "education": {
-    "degree": "<b>B.Tech in Computer Science & Engineering</b>",
+    "degree": "B.Tech in Computer Science & Engineering",
     "institute": "RCC Institute of Information Technology, Kolkata",
     "year": "2018 – 2022",
     "cgpa": "8.79"
@@ -72,7 +72,7 @@
   ],
 
   "contact": {
-    "email": "<a href='mailto:shubhamsadhu02@gmail.com'>shubhamsadhu02@gmail.com</a>",
+    "email": "<a href='/contactme' target='_blank'>shubhamsadhu02@gmail.com</a>",
     "phone": "<a href='tel:+918002490015'>+91-8002490015</a>",
     "location": "Bengaluru, Karnataka",
     "portfolio": "<a href='https://my-portfolio-shubham3000s-projects.vercel.app/' target='_blank'>https://my-portfolio-shubham3000s-projects.vercel.app/</a>",
