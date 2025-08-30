@@ -15,21 +15,16 @@ interface Message {
 }
 
 const responseMapping: [RegExp, string][] = [
-  [
-    /about me|describe yourself|introduction|professional summary|How many years of experience/i,
-    "professional_summary",
-  ],
-  [
-    /experience|work history|professional experience|what is your experience|work experience/i,
-    "experience",
-  ],
+  [/about me|about|professional|summary|describe yourself|introduction|introduce|introduce yourself|professional summary|How many years of experience/i,"professional_summary"],
+  [/experience|work|work history|professional experience|what is your experience|work experience/i,"experience"],
   [/projects|your project|my project|project/i, "projects"],
-  [/education|qualification|degree|college|school/i, "education"],
+  [/education|qualification|degree|college|school|high|highest|highest qualification/i, "education"],
   [/certification|certifications|courses/i, "certifications"],
   [/contact|email|phone|linkedin|github|portfolio/i, "contact"],
   [/hello|hi|hii/i, "hello"],
   [/who are you|who/i, "who_are_you"],
   [/bye|goodbye|see you|exit|quit|byee/i, "bye"],
+  [/skills|skill|tech Skills|tech|technology|programming|language|programming language|python|slenium|React|reactJs/i, "skills"],
 ];
 
 export default function Page() {

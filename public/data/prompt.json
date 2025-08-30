@@ -3,9 +3,12 @@
   "who_are_you": "I’m <b>Sam AI</b>, your chatbot assistant 🚀",
   "bye": "<b>Goodbye!</b> Take care 👋",
 
- "professional_summary": "<p style='font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-size:1.1em; color:#333; line-height:1.5;'>Hi, I’m <strong style='color:#0078d4;'>Shubham Sadhu</strong>, a <strong>Software Engineer</strong> with over <strong>3 years of experience</strong> specializing in <em>Automation</em> and <em>Frontend development</em>. I focus on building scalable web applications, creating automation solutions, and delivering user-friendly dashboards. Proficient in <strong>ReactJS</strong>, <strong>Azure</strong>, <strong>Selenium</strong>, and <strong>Python</strong>, I combine modern web technologies with automation to build efficient and impactful solutions. Passionate about continuous improvement, I enjoy mentoring teams and driving productivity through automation best practices.</p>",
+  "professional_summary": "<p style='font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-size:1.1em; color:#333; line-height:1.5;'>Hi, I’m <strong style='color:#0078d4;'>Shubham Sadhu</strong>, a <strong>Software Engineer</strong> with over <strong>3+ years of experience</strong> specializing in <em>Automation</em> and <em>Frontend development</em>. I focus on building scalable web applications, creating automation solutions, and delivering user-friendly dashboards. Proficient in <strong>ReactJS</strong>, <strong>Azure</strong>, <strong>Selenium</strong>, and <strong>Python</strong>, I combine modern web technologies with automation to build efficient and impactful solutions. Passionate about continuous improvement, I enjoy mentoring teams and driving productivity through automation best practices.</p>",
 
   "experience": [
+    {
+      "profile": "<a href='/work-experience' style='color:blue;'>Experience Profile</a>"
+    },
     {
       "role": "<b>Software Developer</b>",
       "company": "<b>TCS</b>, Bangalore",
@@ -32,6 +35,9 @@
   ],
 
   "projects": [
+     {
+      "profile": "<a href='/projects' style='color:blue;'>Projects Profile</a>"
+    },
     {
       "name": "<b>Dashboard (TCS Project)</b>",
       "details": [
@@ -61,22 +67,35 @@
     "degree": "B.Tech in Computer Science & Engineering",
     "institute": "RCC Institute of Information Technology, Kolkata",
     "year": "2018 – 2022",
-    "cgpa": "8.79"
+    "cgpa": "8.79",
+    "profile": "<a href='/education' style='color:blue;'>Education Profile</a>"
   },
 
   "certifications": [
-    "<b>Microsoft Certified:</b><a href='https://www.credly.com/badges/783ad677-a366-4f85-8ba0-7be565b1c779/public_url> Azure Fundamentals</a>",
-    "<b><a href='https://certificates.automationanywhere.com/4affe862-e5f5-4af6-a2e3-f0fe2dac8894#acc.dKxiFcEy'>Anywhere Certificate</a></b>",
-    "Solved <b>100+ problems</b> on <a href='https://leetcode.com/' target='_blank'>LeetCode</a>",
-    "<a href='https://www.hackerrank.com/' target='_blank'>Hackerrank Certifications</a>"
+    "<b>Microsoft Certified:</b><a style='color:blue;' href='https://www.credly.com/badges/783ad677-a366-4f85-8ba0-7be565b1c779/public_url> Azure Fundamentals</a>",
+    "<b><a style='color:blue;' href='https://certificates.automationanywhere.com/4affe862-e5f5-4af6-a2e3-f0fe2dac8894#acc.dKxiFcEy'>Anywhere Certificate</a></b>",
+    "Solved <b>100+ problems</b> on <a style='color:blue;' href='https://leetcode.com/u/shubhamsadhu02/' target='_blank'>LeetCode</a>",
+    "<a style='color:blue;' href='https://www.hackerrank.com/profile/shubhamsadhu02' target='_blank'>Hackerrank Certifications</a>",
+    "<b>Profile:</b><a href='/certifications' style='color:blue;'>Certifications Profile</a>"
   ],
 
   "contact": {
-    "email": "<a href='/contactme' target='_blank'>shubhamsadhu02@gmail.com</a>",
-    "phone": "<a href='tel:+918002490015'>+91-8002490015</a>",
+    "email": "<a href='/contactme' target='_blank' style='color:blue;'>shubhamsadhu02@gmail.com</a>",
+    "phone": "<a href='tel:+918002490015' style='color:blue;'>+91-8002490015</a>",
     "location": "Bengaluru, Karnataka",
-    "portfolio": "<a href='https://my-portfolio-shubham3000s-projects.vercel.app/' target='_blank'>https://my-portfolio-shubham3000s-projects.vercel.app/</a>",
-    "github": "<a href='https://github.com/shubham3000' target='_blank'>https://github.com/shubham3000</a>",
-    "linkedin": "<a href='https://www.linkedin.com/in/shubham-sadhu-9a0493201/' target='_blank'>https://www.linkedin.com/in/shubham-sadhu-9a0493201/</a>"
+    "portfolio": "<a style='color:blue;' href='https://my-portfolio-shubham3000s-projects.vercel.app/' target='_blank'>https://my-portfolio-shubham3000s-projects.vercel.app/</a>",
+    "github": "<a style='color:blue;' href='https://github.com/shubham3000' target='_blank'>https://github.com/shubham3000</a>",
+    "linkedin": "<a style='color:blue;' href='https://www.linkedin.com/in/shubham-sadhu-9a0493201/' target='_blank'>https://www.linkedin.com/in/shubham-sadhu-9a0493201/</a>"
+  },
+
+  "skills": {
+    "programming_languages": "Python, JavaScript",
+    "frameworks_libraries": "ReactJS, HTML5, CSS, Tailwind CSS, Bootstrap",
+    "automation_tools": "Selenium, Automation Anywhere (A360)",
+    "cloud_platforms": "Microsoft Azure (App Services, Logic Apps, Azure DevOps)",
+    "databases": "Oracle, Firebase",
+    "version_control": "Git, GitHub",
+    "others": "RESTful APIs, CI/CD, Agile Methodologies, Redux, MSAL",
+    "skills": "<a href='/skills' style='color:blue;'>My Skills</a>"
   }
 }

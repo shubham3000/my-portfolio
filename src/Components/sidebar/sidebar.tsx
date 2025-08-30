@@ -31,7 +31,7 @@ export function PortfolioSidebar() {
     },
     {
       label: "Work Experience",
-      href: "work-experience",
+      href: "/work-experience",
       icon: (
         <IconBriefcaseFilled className="text-white h-5 w-5 flex-shrink-0" />
       ),
