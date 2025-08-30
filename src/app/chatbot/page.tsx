@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 const GEMINI_API_URL =
@@ -12,6 +14,18 @@ interface Message {
   content: string;
 }
 
+const responseMapping: [RegExp, string][] = [
+  [/about me|describe yourself|introduction|professional summary|How many years of experience/i,"professional_summary",],
+  [/experience|work history|professional experience|what is your experience|work experience/i, "experience"],
+  [/projects|your project|my project|project/i, "projects"],
+  [/education|qualification|degree|college|school/i, "education"],
+  [/certification|certifications|courses/i, "certifications"],
+  [/contact|email|phone|linkedin|github|portfolio/i, "contact"],
+  [/hello|hi|hii/i, "hello"],
+  [/who are you|who/i, "who_are_you"],
+  [/bye|goodbye|see you|exit|quit|byee/i, "bye"],
+];
+
 export default function Page() {
   const [messages, setMessages] = useState<Message[]>(() => {
     if (typeof window !== "undefined") {
@@ -20,14 +34,13 @@ export default function Page() {
     }
     return [];
   });
-
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [customResponses, setCustomResponses] = useState<
-    Record<string, string>
-  >({});
+  const [customResponses, setCustomResponses] = useState<Record<string, any>>(
+    {}
+  );
+  const [suggestions, setSuggestions] = useState<string[]>([]);
 
-  // 🔹 Load custom responses from JSON
   useEffect(() => {
     fetch("/data/prompt.json")
       .then((res) => res.json())
@@ -38,6 +51,103 @@ export default function Page() {
     sessionStorage.setItem("chatMessages", JSON.stringify(messages));
   }, [messages]);
 
+  const formatArray = (arr: any[]) =>
+    arr
+      .map((item) =>
+        typeof item === "string"
+          ? `• ${item}`
+          : typeof item === "object"
+            ? Object.entries(item)
+                .map(
+                  ([k, v]) =>
+                    `<b>${k}:</b> ${Array.isArray(v) ? v.join(", ") : v}`
+                )
+                .join("<br/>")
+            : item
+      )
+      .join("<br/>");
+
+  const formatMessage = (content: string, role?: string) => {
+    let formatted = content
+      .replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>")
+      .replace(/`([^`]+)`/g, "<code>$1</code>")
+      .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
+      .replace(/\*(.*?)\*/g, "<i>$1</i>");
+
+    const codeBlockRegex = /<pre><code>([\s\S]*?)<\/code><\/pre>/g;
+    const parts = formatted.split(codeBlockRegex);
+
+    return parts.map((part, index) => {
+      if (role === "bot" && index % 2 === 1) {
+        return (
+          <SyntaxHighlighter
+            key={index}
+            language="python"
+            style={materialDark}
+            wrapLines
+          >
+            {part.trim()}
+          </SyntaxHighlighter>
+        );
+      }
+
+      return (
+        <span
+          key={index}
+          dangerouslySetInnerHTML={{ __html: part.replace(/\n/g, "<br/>") }}
+        />
+      );
+    });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInput(value);
+
+    if (!value.trim()) {
+      setSuggestions([]);
+      return;
+    }
+
+    const lowerValue = value.toLowerCase();
+
+    const matchedKeys = responseMapping
+      .filter(([regex]) => regex.test(lowerValue))
+      .map(([, key]) => key)
+      .filter((key) => customResponses[key]);
+
+    setSuggestions(matchedKeys.length > 0 ? matchedKeys : []);
+  };
+
+  const handleSuggestionClick = (key: string) => {
+    const content = customResponses[key];
+    let formattedContent = "";
+
+    if (Array.isArray(content)) formattedContent = formatArray(content);
+    else if (typeof content === "object")
+      formattedContent = Object.entries(content)
+        .map(([k, v]) => `<b>${k}:</b> ${v}`)
+        .join("<br/>");
+    else formattedContent = content;
+
+    setMessages((prev) => [
+      ...prev,
+      { role: "bot", content: formattedContent },
+    ]);
+    setSuggestions([]);
+    setInput("");
+  };
+
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      if (suggestions.length > 0) {
+        handleSuggestionClick(suggestions[0]);
+      } else {
+        sendMessage();
+      }
+    }
+  };
+
   const sendMessage = async () => {
     if (!input.trim()) return;
 
@@ -45,119 +155,58 @@ export default function Page() {
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
+    setSuggestions([]);
 
     const lowerInput = input.toLowerCase().trim();
 
-    switch (true) {
-      //Respond to About Me questions
-      case /about me|who are you|Describe yourself|your projects|your project|my projects|my project|experience/i.test(
-        lowerInput
-      ):
-        setMessages((prev) => [
-          ...prev,
-          { role: "bot", content: customResponses["about_me"] },
-        ]);
-        setLoading(false);
-        break;
+    try {
+      for (const [regex, key] of responseMapping) {
+        if (regex.test(lowerInput) && customResponses[key]) {
+          let content: any = customResponses[key];
 
-      //Respond from custom JSON responses
-      case !!customResponses[lowerInput]:
+          if (Array.isArray(content)) content = formatArray(content);
+          else if (typeof content === "object")
+            content = Object.entries(content)
+              .map(([k, v]) => `<b>${k}:</b> ${v}`)
+              .join("<br/>");
+
+          setMessages((prev) => [...prev, { role: "bot", content }]);
+          setLoading(false);
+          return;
+        }
+      }
+
+      if (customResponses[lowerInput]) {
         setMessages((prev) => [
           ...prev,
           { role: "bot", content: customResponses[lowerInput] },
         ]);
         setLoading(false);
-        break;
+        return;
+      }
 
-      //Otherwise, call Gemini API
-      default:
-        try {
-          const res = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: input }] }],
-            }),
-          });
+      const res = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: input }] }],
+        }),
+      });
 
-          const data = await res.json();
-          const botReply =
-            data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-            "Sorry, I could not generate a response.";
+      const data = await res.json();
+      const botReply =
+        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+        "Sorry, I could not generate a response.";
 
-          setMessages((prev) => [...prev, { role: "bot", content: botReply }]);
-        } catch (error) {
-          setMessages((prev) => [
-            ...prev,
-            { role: "bot", content: "Error contacting Gemini API." },
-          ]);
-        } finally {
-          setLoading(false);
-        }
-        break;
+      setMessages((prev) => [...prev, { role: "bot", content: botReply }]);
+    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        { role: "bot", content: "Error contacting Gemini API." },
+      ]);
+    } finally {
+      setLoading(false);
     }
-  };
-
-  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") sendMessage();
-  };
-
-  const formatMessage = (content: string, role?: string) => {
-    const codeBlockRegex = /```([\s\S]*?)```/g;
-    const parts = content.split(codeBlockRegex);
-
-    return parts.map((part, index) => {
-      if (role === "bot" && index % 2 === 1) {
-        const cleaned = part
-          .trim()
-          .replace(
-            /^(py|python|js|javascript|ts|tsx|java|c|cpp|html|css)\n/i,
-            ""
-          );
-
-        return (
-          <pre
-            key={index}
-            className="bg-gray-900 text-white p-4 rounded-md overflow-x-auto my-2 text-sm"
-          >
-            <code>{cleaned}</code>
-          </pre>
-        );
-      }
-
-      if (role === "bot") {
-        return (
-          <span key={index}>
-            {part
-              .split("\n")
-              .filter((line) => line.trim() !== "")
-              .map((line, i) => {
-                if (line.trim().startsWith("- ")) {
-                  return (
-                    <li key={i} className="list-disc list-inside">
-                      {line.replace("- ", "")}
-                    </li>
-                  );
-                }
-
-                const formattedLine = line
-                  .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-                  .replace(/\*(.*?)\*/g, "<em>$1</em>");
-
-                return (
-                  <p
-                    key={i}
-                    className="mb-1"
-                    dangerouslySetInnerHTML={{ __html: formattedLine }}
-                  />
-                );
-              })}
-          </span>
-        );
-      }
-
-      return <span key={index}>{part}</span>;
-    });
   };
 
   return (
@@ -168,74 +217,84 @@ export default function Page() {
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="text-4xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold"
+            className="text-4xl md:text-5xl h-14 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 font-bold"
           >
             Sam AI Chatbot
           </motion.h2>
-          <div className="w-full">
-            <motion.p
-              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              className="text-lg text-white"
+
+          <motion.p
+            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="text-lg text-white mt-4"
+          >
+            This chatbot is built with{" "}
+            <Link
+              href="https://aistudio.google.com/"
+              className="text-blue-400 underline"
+              target="_blank"
             >
-              This chatbot is built with{" "}
-              <Link
-                href={
-                  "https://aistudio.google.com/welcome?utm_source=google&utm_medium=cpc&utm_campaign=FY25-global-DR-gsem-BKWS-1710442&utm_content=text-ad-none-any-DEV_c-CRE_726176536028-ADGP_Hybrid%20%7C%20BKWS%20-%20EXA%20%7C%20Txt-Gemini-Gemini%20API-KWID_43700081658540311-kwd-927524447508&utm_term=KW_gemini%20api-ST_gemini%20api&gclsrc=aw.ds&gad_source=1&gad_campaignid=20860602951&gbraid=0AAAAACn9t65pEKDSbHex5z5-5CLKV50sw&gclid=CjwKCAjw2brFBhBOEiwAVJX5GIqfr1af3psNRKq8Zx1xQxUXP7TsNQCnJYdWRzmeokfNcoXoVnK2wRoCzasQAvD_BwE"
-                }
-                className="text-blue-400 underline"
-                target="_blank"
+              Gemini API
+            </Link>{" "}
+            and connected directly to my portfolio. It demonstrates my ability
+            to work with advanced AI models, integrate APIs, and create smooth
+            user experiences.
+          </motion.p>
+
+          <div className="space-y-6 p-6 mt-10 rounded-xl bg-white/5 backdrop-blur-md border border-white/20 shadow-md animate-fade-in">
+            {messages.map((msg, idx) => (
+              <div
+                key={idx}
+                className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} my-2`}
               >
-                Gemini API
-              </Link> and connected directly to my portfolio. It demonstrates my ability
-              to work with advanced AI models, integrate APIs, and create smooth
-              user experiences where visitors can chat, explore, and learn
-              interactively.
-            </motion.p>
-            <div className="space-y-6 p-6 mt-10 rounded-xl bg-white/5 backdrop-blur-md border border-white/20 shadow-md animate-fade-in">
-              {messages.map((msg, idx) => (
                 <div
-                  key={idx}
-                  className={`flex ${
-                    msg.role === "user" ? "justify-end" : "justify-start"
-                  } my-2`}
+                  className={`inline-block max-w-[70%] break-words p-3 rounded-lg ${
+                    msg.role === "user"
+                      ? "bg-gray-800 text-white"
+                      : "bg-gray-200 text-gray-900 capitalize"
+                  }`}
                 >
-                  <div
-                    className={`inline-block max-w-[70%] break-words p-3 rounded-lg ${
-                      msg.role === "user"
-                        ? "bg-gray-800 text-white"
-                        : "bg-gray-200 text-gray-900"
-                    }`}
-                  >
-                    {formatMessage(msg.content, msg.role)}
-                  </div>
+                  {formatMessage(msg.content, msg.role)}
                 </div>
-              ))}
-              {loading && <div className="text-gray-400">Sam is typing...</div>}
-            </div>
-            <div className="flex gap-2 mt-4">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleInputKeyDown}
-                placeholder="Type your message..."
-                className="w-full border border-white/30 rounded-md p-3 bg-transparent text-white placeholder-gray-400 transition focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-blue-400"
-                disabled={loading}
-              />
-              <button
-                onClick={sendMessage}
-                disabled={loading || !input.trim()}
-                className={`px-5 rounded-md bg-gray-800 text-white text-base font-medium transition-colors ${
-                  loading || !input.trim()
-                    ? "opacity-60 cursor-not-allowed"
-                    : "hover:bg-gray-600 cursor-pointer"
-                }`}
-              >
-                Send
-              </button>
-            </div>
+              </div>
+            ))}
+            {loading && <div className="text-gray-400">Sam is typing...</div>}
+          </div>
+
+          <div className="flex gap-2 mt-4 relative border border-white/30 rounded-md p-2 bg-white/5 backdrop-blur-md">
+            <input
+              type="text"
+              value={input}
+              onChange={handleInputChange}
+              onKeyDown={handleInputKeyDown}
+              placeholder="Type your message..."
+              className="w-full rounded-md p-3 bg-transparent text-white placeholder-gray-400 focus:outline-none transition"
+              disabled={loading}
+            />
+            {suggestions.length > 0 && (
+              <div className="absolute top-full left-0 right-0 bg-gray-800 text-white rounded-md mt-1 max-h-40 overflow-y-auto z-50 shadow-lg">
+                {suggestions.map((key, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => handleSuggestionClick(key)}
+                    className="px-3 py-2 hover:bg-gray-700 cursor-pointer capitalize"
+                  >
+                    {key.replace(/_/g, " ")}
+                  </div>
+                ))}
+              </div>
+            )}
+            <button
+              onClick={sendMessage}
+              disabled={loading || !input.trim()}
+              className={`px-5 rounded-md bg-gray-800 text-white text-base font-medium transition-colors ${
+                loading || !input.trim()
+                  ? "opacity-60 cursor-not-allowed"
+                  : "hover:bg-gray-600 cursor-pointer"
+              }`}
+            >
+              Send
+            </button>
           </div>
         </div>
       </div>
