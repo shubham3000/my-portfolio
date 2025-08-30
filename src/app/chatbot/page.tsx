@@ -101,52 +101,59 @@ export default function Page() {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setInput(value);
+  const value = e.target.value;
+  setInput(value);
 
-    if (!value.trim()) {
-      setSuggestions([]);
-      return;
-    }
+  if (!value.trim()) {
+    setSuggestions([]);
+    return;
+  }
 
-    const lowerValue = value.toLowerCase();
+  const lowerValue = value.toLowerCase();
+  const matchedKeys = responseMapping
+    .filter(([regex]) => regex.test(lowerValue))
+    .map(([, key]) => key)
+    .filter((key) => customResponses[key]);
 
-    const matchedKeys = responseMapping
-      .filter(([regex]) => regex.test(lowerValue))
-      .map(([, key]) => key)
-      .filter((key) => customResponses[key]);
+  setSuggestions(matchedKeys.length > 0 ? matchedKeys : []);
+};
 
-    setSuggestions(matchedKeys.length > 0 ? matchedKeys : []);
-  };
 
   const handleSuggestionClick = (key: string) => {
-    const content = customResponses[key];
-    let formattedContent = "";
+  const content = customResponses[key];
+  let formattedContent = "";
 
-    if (Array.isArray(content)) formattedContent = formatArray(content);
-    else if (typeof content === "object")
-      formattedContent = Object.entries(content)
-        .map(([k, v]) => `<b>${k}:</b> ${v}`)
-        .join("<br/>");
-    else formattedContent = content;
+  if (Array.isArray(content)) formattedContent = formatArray(content);
+  else if (typeof content === "object")
+    formattedContent = Object.entries(content)
+      .map(([k, v]) => `<b>${k}:</b> ${v}`)
+      .join("<br/>");
+  else formattedContent = content;
 
-    setMessages((prev) => [
-      ...prev,
-      { role: "bot", content: formattedContent },
-    ]);
-    setSuggestions([]);
-    setInput("");
-  };
+  // Add user message (simulating they typed the suggestion)
+  setMessages((prev) => [
+    ...prev,
+    { role: "user", content: key.replace(/_/g, " ") },
+  ]);
+
+  // Add bot message
+  setMessages((prev) => [...prev, { role: "bot", content: formattedContent }]);
+
+  setSuggestions([]);
+  setInput("");
+};
+
 
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      if (suggestions.length > 0) {
-        handleSuggestionClick(suggestions[0]);
-      } else {
-        sendMessage();
-      }
+  if (e.key === "Enter") {
+    if (suggestions.length > 0) {
+      handleSuggestionClick(suggestions[0]); // select first suggestion
+    } else {
+      sendMessage(); // normal message
     }
-  };
+  }
+};
+
 
   const sendMessage = async () => {
     if (!input.trim()) return;
