@@ -1,10 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
-// --- Types
 type Player = "X" | "O";
 
-// --- Helpers
 const LINES = [
   [0, 1, 2],
   [3, 4, 5],
@@ -36,7 +34,6 @@ function clone(board: (Player | null)[]) {
   return [...board] as (Player | null)[];
 }
 
-// Minimax with small optimizations (unbeatable bot)
 function minimax(
   board: (Player | null)[],
   current: Player,
@@ -48,10 +45,9 @@ function minimax(
 ): { score: number; move: number | null } {
   const result = calculateWinner(board);
   if (result) {
-    // Score from AI perspective
     if (result.winner === ai) return { score: 10 - depth, move: null };
     if (result.winner === human) return { score: depth - 10, move: null };
-    return { score: 0, move: null }; // draw
+    return { score: 0, move: null };
   }
 
   const moves = availableMoves(board);
@@ -67,23 +63,19 @@ function minimax(
     const res = minimax(next, nextPlayer, ai, human, depth + 1, alpha, beta);
 
     if (current === ai) {
-      // maximize
       if (res.score > best.score) best = { score: res.score, move: m };
       if (res.score > alpha) alpha = res.score;
     } else {
-      // minimize
       if (res.score < best.score) best = { score: res.score, move: m };
       if (res.score < beta) beta = res.score;
     }
 
-    // Alpha-beta cutoff
     if (beta <= alpha) break;
   }
 
   return best;
 }
 
-// --- Main Component
 export default function TicTacToe() {
   const [board, setBoard] = useState<(Player | null)[]>(Array(9).fill(null));
   const [human, setHuman] = useState<Player>("X");
@@ -100,16 +92,15 @@ export default function TicTacToe() {
   const result = useMemo(() => calculateWinner(board), [board]);
 
   useEffect(() => {
-    if (!result) return; // Game continues
+    if (!result) return; 
 
     if (result.winner === "X") setScores((s) => ({ ...s, X: s.X + 1 }));
     else if (result.winner === "O") setScores((s) => ({ ...s, O: s.O + 1 }));
-    else setScores((s) => ({ ...s, draws: s.draws + 1 })); // Draw
+    else setScores((s) => ({ ...s, draws: s.draws + 1 })); 
 
     setGameOver(true);
     setHighlight(result.line);
 
-    // Automatically reset the turn to the human player after a draw
     if (result.winner === null) {
       setTurn(human);
     }
@@ -130,7 +121,7 @@ export default function TicTacToe() {
         setTurn(human);
       }
       setBotThinking(false);
-    }, 450); // small delay for UX
+    }, 450); 
 
     return () => clearTimeout(timer);
   }, [turn, ai, human, board, gameOver, difficulty]);
@@ -150,7 +141,6 @@ export default function TicTacToe() {
     }
 
     if (difficulty === "smart") {
-      // try win, else block, else center, corner, side
       // win
       for (const m of moves) {
         const tryB = clone(board);
@@ -176,30 +166,30 @@ export default function TicTacToe() {
         : moves[0];
     }
 
-    // unbeatable (minimax)
     return minimax(board, ai, ai, human).move as number;
   }
 
   function handleCellClick(i: number) {
-    if (gameOver || botThinking) return; // Prevent moves if the game is over or the bot is thinking
-    if (turn !== human) return; // Prevent moves if it's not the human's turn
-    if (board[i]) return; // Prevent moves on already occupied cells
+    if (gameOver || botThinking) return;
+    if (turn !== human) return; 
+    if (board[i]) return;
 
     const next = clone(board);
     next[i] = human;
     setBoard(next);
-    setTurn(ai); // Switch turn to the bot
+    setTurn(ai); 
   }
 
   function resetBoard(keepTurn = false) {
-    setBoard(Array(9).fill(null)); // Reset the board
-    setGameOver(false); // Reset the game over state
-    setHighlight([]); // Clear the highlight
-    setTurn(human); // Always set the turn to the human player
+    setBoard(Array(9).fill(null)); 
+    setGameOver(false); 
+    setHighlight([]);
+    setBotThinking(false);
   }
 
   function swapSides() {
     setHuman((h) => (h === "X" ? "O" : "X"));
+    setBotThinking(false);
     resetBoard(true);
   }
 
