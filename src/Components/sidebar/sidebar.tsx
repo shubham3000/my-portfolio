@@ -75,7 +75,7 @@ export function PortfolioSidebar() {
       ),
     },
     {
-      label: "Sam AI Chat Bot",
+      label: "Sam AI Chatbot",
       href: "/chatbot",
       icon: <IconRobot className="text-white h-5 w-5 flex-shrink-0" />,
     },

@@ -1,5 +1,5 @@
-"use client";
-import React from "react";
+'use client';
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import ShubhamProfile from "@/assests/ShubhamImage.jpg";
 import Image from "next/image";
@@ -10,16 +10,15 @@ import {
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandNextjs,
-  IconBrandNodejs,
   IconBrandPython,
-  IconBrandReact,
   IconFileCv,
   IconMail,
   IconPhone,
-  IconBrandVue,
   IconBrandAzure,
+  IconBrandReact,
 } from "@tabler/icons-react";
 import Link from "next/link";
+import ChatBotIcon from "@/Components/chatToolTip/chattooltip";
 
 const socials = [
   {
@@ -59,18 +58,10 @@ const techStacks = [
     title: "ReactJs",
     icon: IconBrandReact,
   },
-  // {
-  //   title: "NodeJs",
-  //   icon: IconBrandNodejs,
-  // },
   {
     title: "NextJs",
     icon: IconBrandNextjs,
   },
-  // {
-  //   title: "Vue",
-  //   icon: IconBrandVue,
-  // },
   {
     title: "Python",
     icon: IconBrandPython,
@@ -85,11 +76,18 @@ const techStacks = [
   },
 ];
 
-export default function page() {
+export default function Page() {
+  useEffect(() => {
+      const audio = new Audio("/sounds/mixkit-sci-fi-confirmation.wav");
+      audio.play().catch(() => {
+        console.log("Autoplay blocked, will require user interaction.");
+      });
+  });
+
   return (
     <div>
       <BackgroundLines>
-        <div className=" w-full rounded-md relative antialiased">
+        <div className="w-full rounded-md relative antialiased">
           <div className="max-w-2xl mx-auto pt-4 md:pt-20 p-4 space-y-4">
             <div className="flex justify-center">
               <motion.div
@@ -109,7 +107,7 @@ export default function page() {
               initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="relative z-10 text-4xl md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold"
+              className="relative z-10 text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 text-center font-sans font-bold"
             >
               Shubham Sadhu
             </motion.h1>
@@ -132,7 +130,7 @@ export default function page() {
                     className="relative group flex items-center justify-center"
                   >
                     <item.icon className="text-white h-6 lg:h-8 w-6 lg:w-8 flex-shrink-0 hover:text-purple-500" />
-                    <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
+                    <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-sm lg:text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
                       {item.title}
                       <div className="absolute left-1/2 top-full -translate-x-1/2 w-2 h-2 bg-gray-600 rotate-45"></div>
                     </div>
@@ -163,7 +161,7 @@ export default function page() {
                     className="relative group flex items-center justify-center mr-4"
                   >
                     <item.icon className="text-white h-6 lg:h-8 w-6 lg:w-8 flex-shrink-0 hover:text-purple-500" />
-                    <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
+                    <div className="absolute bottom-full mb-2 hidden group-hover:flex px-2 py-1 text-sm lg:text-lg rounded-lg bg-gray-600 text-white whitespace-nowrap shadow-md transition-opacity duration-300 z-50">
                       {item.title}
                       <div className="absolute left-1/2 top-full -translate-x-1/2 w-2 h-2 bg-gray-600 rotate-45"></div>
                     </div>
@@ -171,19 +169,12 @@ export default function page() {
                 ))}
               </div>
             </div>
-            {/* <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
-              Creative and detail-oriented frontend developer with strong design
-              and integration skills paired with intuitive problem-solving
-              abilities. Proficient in ReactJS and experienced in leveraging
-              modern web technologies to create engaging user interfaces.
-              Passionate about building and launching innovative projects, with a
-              proven ability to translate business requirements into effective
-              technical solutions. Seeking opportunities to contribute expertise
-              to a forward-thinking technology-driven organization.
-            </p> */}
           </div>
         </div>
       </BackgroundLines>
+
+      {/* Floating Chatbot Icon */}
+      <ChatBotIcon/>
     </div>
   );
 }
