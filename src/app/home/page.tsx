@@ -17,6 +17,7 @@ import {
   IconMail,
   IconPhone,
   IconBrandVue,
+  IconBrandAzure,
 } from "@tabler/icons-react";
 import Link from "next/link";
 
@@ -66,10 +67,10 @@ const techStacks = [
     title: "NextJs",
     icon: IconBrandNextjs,
   },
-  {
-    title: "Vue",
-    icon: IconBrandVue,
-  },
+  // {
+  //   title: "Vue",
+  //   icon: IconBrandVue,
+  // },
   {
     title: "Python",
     icon: IconBrandPython,
@@ -77,6 +78,10 @@ const techStacks = [
   {
     title: "Git",
     icon: IconBrandGit,
+  },
+  {
+    title: "Azure",
+    icon: IconBrandAzure,
   },
 ];
 
