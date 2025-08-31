@@ -334,7 +334,7 @@ export default function TicTacToe() {
           {gameOver && (
             <button
               onClick={() => resetBoard(true)}
-              className="text-sm underline decoration-dotted"
+              className="text-sm lg:text-lg underline decoration-dotted text-neutral-300"
             >
               Play again (same starter)
             </button>

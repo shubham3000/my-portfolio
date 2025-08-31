@@ -13,6 +13,7 @@ import {
   IconMail,
   IconRobot,
   IconDeviceGamepad2,
+  IconFreeRights,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import { cn } from "@/utils/cn";
@@ -48,7 +49,7 @@ export function PortfolioSidebar() {
       label: "Freelancing",
       href: "/freelance",
       icon: (
-        <IconCircleDottedLetterF className="text-white h-5 w-5 flex-shrink-0" />
+        <IconFreeRights className="text-white h-5 w-5 flex-shrink-0" />
       ),
     },
     {
