@@ -92,7 +92,7 @@
   "skills": {
     "programming_languages": "Python, JavaScript",
     "frameworks_libraries": "ReactJS, HTML5, CSS, Tailwind CSS, Bootstrap",
-    "automation_tools": "Selenium, Automation Anywhere (A360)",
+    "automation_tools": "Selenium, Automation Anywhere (A360), Pandas, NumPy, OpenPyXL",
     "cloud_platforms": "Microsoft Azure (App Services, Logic Apps, Azure DevOps)",
     "databases": "Oracle, Firebase",
     "version_control": "Git, GitHub",

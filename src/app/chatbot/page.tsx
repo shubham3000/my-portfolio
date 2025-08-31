@@ -25,7 +25,7 @@ const responseMapping: [RegExp, string][] = [
   [/hi|hii|hiii/i, "hi"],
   [/who are you|who/i, "who_are_you"],
   [/bye|goodbye|see you|exit|quit|byee/i, "bye"],
-  [/skills|skill|tech Skills|tech|technology|programming|language|programming language|python|slenium|React|reactJs/i, "skills"],
+  [/skills|skill|tech Skills|tech|technology|programming|language|programming language/i, "skills"],
 ];
 
 export default function Page() {
