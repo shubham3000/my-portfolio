@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { IconX } from "@tabler/icons-react";
 
 const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 const GEMINI_API_URL =
@@ -15,17 +16,31 @@ interface Message {
 }
 
 const responseMapping: [RegExp, string][] = [
-  [/about me|about|professional|summary|describe yourself|introduction|introduce|introduce yourself|professional summary|How many years of experience/i,"professional_summary"],
-  [/experience|work|work history|professional experience|what is your experience|work experience|what is your experience/i,"experience"],
-  [/projects|your project|my project|project/i, "projects"],
-  [/education|qualification|degree|college|school|high|highest|highest qualification|what is your qualification|what is your highest qualification/i, "education"],
-  [/certification|certifications|courses/i, "certifications"],
-  [/contact|email|phone|linkedin|github|portfolio/i, "contact"],
-  [/hello|helloo|heloo/i, "hello"],
-  [/hi|hii|hiii/i, "hi"],
-  [/who are you|who/i, "who_are_you"],
-  [/bye|goodbye|see you|exit|quit|byee/i, "bye"],
-  [/skills|skill|tech Skills|tech|technology|programming|language|programming language/i, "skills"],
+  [
+    /\babout me\b|\babout you\b|\babout\b|\bprofessional\b|\bsummary\b|\bdescribe yourself\b|\bintroduction\b|\bintroduce\b|\bintroduce yourself\b|\bprofessional summary\b|\bhow many years of experience\b/i,
+    "professional_summary",
+  ],
+  [
+    /\bexperience\b|\bwork\b|\bwork history\b|\bprofessional experience\b|\bwhat is your experience\b|\bwork experience\b/i,
+    "experience",
+  ],
+  [/\bprojects?\b|\byour project\b|\bmy project\b/i, "projects"],
+  [
+    /\beducation\b|\bqualification\b|\bqualifications\b|\bdegree\b|\bcollege\b|\bschool\b|\bhighest qualification\b|\bwhat is your qualification\b|\bwhat is your highest qualification\b/i,
+    "education",
+  ],
+  [/\bcertification\b|\bcertifications\b|\bcourses\b/i, "certifications"],
+  [
+    /\bcontact\b|\bcontacts\b|\bemail\b|\bphone\b|\blinkedin\b|\bgithub\b|\bportfolio\b/i,
+    "contact",
+  ],
+  [/\bhello+\b|\bhi+\b|\bhey+\b/i, "hello"],
+  [/\bwho are you\b|\bwho\b/i, "who_are_you"],
+  [/\bbye+\b|\bgoodbye\b|\bsee you\b|\bexit\b|\bquit\b/i, "bye"],
+  [
+    /\bskills?\b|\btech skills?\b|\btech\b|\btechnology\b|\bprogramming\b|\blanguage\b|\bprogramming language\b/i,
+    "skills",
+  ],
 ];
 
 export default function Page() {
@@ -130,8 +145,10 @@ export default function Page() {
     }
 
     const lowerValue = value.toLowerCase();
+    const words = lowerValue.split(/\s+/); // 👈 split input into words
+
     const matchedKeys = responseMapping
-      .filter(([regex]) => regex.test(lowerValue))
+      .filter(([regex]) => words.some((w) => regex.test(w))) // ✅ check full word only
       .map(([, key]) => key)
       .filter((key) => customResponses[key]);
 
@@ -187,6 +204,7 @@ export default function Page() {
     const lowerInput = input.toLowerCase().trim();
 
     try {
+      // 1️⃣ First, check custom response mapping
       for (const [regex, key] of responseMapping) {
         if (regex.test(lowerInput) && customResponses[key]) {
           let content: any = customResponses[key];
@@ -203,20 +221,21 @@ export default function Page() {
         }
       }
 
-      if (customResponses[lowerInput]) {
-        setMessages((prev) => [
-          ...prev,
-          { role: "bot", content: customResponses[lowerInput] },
-        ]);
-        setLoading(false);
-        return;
-      }
-
+      // 2️⃣ If no custom response, use Gemini with chat history
       const res = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: input }] }],
+          contents: [
+            ...messages.map((m) => ({
+              role: m.role === "user" ? "user" : "model",
+              parts: [{ text: m.content }],
+            })),
+            {
+              role: "user",
+              parts: [{ text: input }],
+            },
+          ],
         }),
       });
 
@@ -299,7 +318,7 @@ export default function Page() {
               disabled={loading}
             />
             {suggestions.length > 0 && (
-              <div className="absolute top-full left-0 right-0 bg-gray-800 text-white rounded-md mt-1 max-h-40 overflow-y-auto z-50 shadow-lg">
+              <div className="absolute flex justify-between top-full left-0 right-0 bg-gray-800 text-white rounded-md mt-1 max-h-40 overflow-y-auto z-50 shadow-lg">
                 {suggestions.map((key, idx) => (
                   <div
                     key={idx}
@@ -309,6 +328,12 @@ export default function Page() {
                     {key.replace(/_/g, " ")}
                   </div>
                 ))}
+                <div
+                  onClick={() => setSuggestions([])}
+                  className="px-3 py-2 text-red-400 hover:bg-red-900 cursor-pointer"
+                >
+                  <IconX/>
+                </div>
               </div>
             )}
             <button
