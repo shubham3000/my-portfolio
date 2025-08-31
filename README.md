@@ -40,27 +40,36 @@ Key highlights:
 ```
 public/
 ├── assests/
+├── data/
 ├── resume/
+├── sounds/
 src/
 ├── app/
-│   ├── globals.css
-│   ├── layout.tsx
-│   ├── page.tsx
-│   ├── about/page.tsx
-│   ├── certifications/page.tsx
-│   ├── education/page.tsx
-│   ├── freelance/page.tsx
-│   ├── hobbies/page.tsx
-│   ├── home/page.tsx
-│   ├── projects/page.tsx
-│   ├── skills/page.tsx
-│   ├── work-experience/page.tsx
-│   └── utils/
-│        └── cn.ts
+    ├── globals.css
+    ├── layout.tsx
+    ├── page.tsx
+    ├── about/page.tsx
+    ├── certifications/page.tsx
+    ├── chatbot/page.tsx
+    ├── contactme/page.tsx
+    ├── education/page.tsx
+    ├── freelance/page.tsx
+    ├── games/page.tsx
+    ├── hobbies/page.tsx
+    ├── home/page.tsx
+    ├── projects/page.tsx
+    ├── skills/page.tsx
+    ├── work-experience/page.tsx
+    ├── api/
+        └── send/route.ts
+    └── utils/
+        └── cn.ts
 ├── Components/
+    ├── chatToolTip/chattooltip.tsx
     ├── Dashboard/dashboard.tsx
     ├── Preloader/preloader.tsx
     ├── sidebar/sidebar.tsx
+    ├── ticTacToe/tictactoe.tsx
     └── ui/
          ├── background-beams.tsx
          ├── background-gradient.tsx
@@ -69,6 +78,7 @@ src/
          ├── link-preview.tsx
          ├── sidebar.tsx
          └── timeline.tsx
+.env.local
 .eslintrc.json
 .gitignore
 next-env.d.ts/

@@ -6,12 +6,13 @@ import {
   IconSchool,
   IconBriefcaseFilled,
   IconUserBolt,
-  IconDeviceGamepad2,
+  IconChefHat,
   IconCodeCircle,
   IconFiles,
   IconCircleDottedLetterF,
   IconMail,
   IconRobot,
+  IconDeviceGamepad2,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import { cn } from "@/utils/cn";
@@ -64,7 +65,7 @@ export function PortfolioSidebar() {
       label: "Hobbies",
       href: "/hobbies",
       icon: (
-        <IconDeviceGamepad2 className="text-white h-5 w-5 flex-shrink-0" />
+        <IconChefHat className="text-white h-5 w-5 flex-shrink-0" />
       ),
     },
     {
@@ -78,6 +79,13 @@ export function PortfolioSidebar() {
       label: "Sam AI Chatbot",
       href: "/chatbot",
       icon: <IconRobot className="text-white h-5 w-5 flex-shrink-0" />,
+    },
+    {
+      label: "Games",
+      href: "/games",
+      icon: (
+        <IconDeviceGamepad2 className="text-white h-5 w-5 flex-shrink-0" />
+      ),
     },
   ];
   const [open, setOpen] = useState(false);
