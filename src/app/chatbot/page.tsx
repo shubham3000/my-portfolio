@@ -17,7 +17,7 @@ interface Message {
 
 const responseMapping: [RegExp, string][] = [
   [
-    /\babout me\b|\babout you\b|\babout\b|\bprofessional\b|\bsummary\b|\bdescribe yourself\b|\bintroduction\b|\bintroduce\b|\bintroduce yourself\b|\bprofessional summary\b|\bhow many years of experience\b/i,
+    /\babout me\b|\babout you\b|\babout\b|\bprofessional\b|\bsummary\b|\bdescribe yourself\b|\bintroduction\b|\bintroduce\b|\bintroduce yourself\b|\bprofessional summary\b|\byears\b/i,
     "professional_summary",
   ],
   [
@@ -53,10 +53,24 @@ export default function Page() {
   });
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [customResponses, setCustomResponses] = useState<Record<string, any>>(
-    {}
-  );
+  const [resumeData, setResumeData] = useState<any>(null); // Store resume data
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [customResponses, setCustomResponses] = useState<{
+    [key: string]: any;
+  }>({});
+
+  useEffect(() => {
+    // Load resume data from the public folder
+    fetch("/resume/Shubham_Sadhu_Resume.json")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch resume data");
+        }
+        return res.json();
+      })
+      .then((data) => setResumeData(data))
+      .catch((err) => console.error("Failed to load resume data:", err));
+  }, []);
 
   useEffect(() => {
     fetch("/data/prompt.json")
@@ -67,6 +81,12 @@ export default function Page() {
   useEffect(() => {
     sessionStorage.setItem("chatMessages", JSON.stringify(messages));
   }, [messages]);
+
+  useEffect(() => {
+    if (resumeData) {
+      console.log("Resume data loaded:", resumeData);
+    }
+  }, [resumeData]);
 
   const formatArray = (arr: any[]) =>
     arr
@@ -204,24 +224,77 @@ export default function Page() {
     const lowerInput = input.toLowerCase().trim();
 
     try {
-      // 1️⃣ First, check custom response mapping
-      for (const [regex, key] of responseMapping) {
-        if (regex.test(lowerInput) && customResponses[key]) {
-          let content: any = customResponses[key];
+      // 1️⃣ Check if the query matches resume data
+      if (resumeData) {
+        // Check for skills
+        const matchedSkills = resumeData.technical_skills.filter((skill: string) =>
+          lowerInput.includes(skill.toLowerCase())
+        );
 
-          if (Array.isArray(content)) content = formatArray(content);
-          else if (typeof content === "object")
-            content = Object.entries(content)
-              .map(([k, v]) => `<b>${k}:</b> ${v}`)
-              .join("<br/>");
+        if (matchedSkills.length > 0) {
+          const skillsList = matchedSkills.join(", ");
+          setMessages((prev) => [
+            ...prev,
+            {
+              role: "bot",
+              content: `Yes, I have experience in ${skillsList}.<br/>You can check my skills here <a href='/skills' style='color:blue;'>My Skills</a>. Thank you.`,
+            },
+          ]);
+          setLoading(false);
+          return;
+        } else if (lowerInput.includes("skills") || lowerInput.includes("know")) {
+          setMessages((prev) => [
+            ...prev,
+            {
+              role: "bot",
+              content:
+                "No, I don't have experience. But I am interested to learn new technologies if I get a chance.<br/>You can check my skills here <a href='/skills' style='color:blue;'>My Skills</a>. Thank you.",
+            },
+          ]);
+          setLoading(false);
+          return;
+        }
 
-          setMessages((prev) => [...prev, { role: "bot", content }]);
+        // Check for experience
+        if (lowerInput.includes("experience") || lowerInput.includes("work")) {
+          const experience = resumeData.work_experience
+            .map(
+              (exp: any) =>
+                `<b>${exp.role}</b> at <b>${exp.company}</b> (${exp.duration}):<br/>${exp.projects
+                  .map(
+                    (proj: any) =>
+                      `- ${proj.name}: ${proj.achievements.join(", ")}`
+                  )
+                  .join("<br/>")}`
+            )
+            .join("<br/><br/>");
+          setMessages((prev) => [
+            ...prev,
+            {
+              role: "bot",
+              content: `Here is my work experience:<br/><br/>${experience}`,
+            },
+          ]);
+          setLoading(false);
+          return;
+        }
+
+        // Check for education
+        if (lowerInput.includes("education") || lowerInput.includes("degree")) {
+          const education = `<b>${resumeData.education.degree}</b> from <b>${resumeData.education.institution}</b> (${resumeData.education.duration}) with a CGPA of ${resumeData.education.cgpa}`;
+          setMessages((prev) => [
+            ...prev,
+            {
+              role: "bot",
+              content: `Here is my educational background:<br/><br/>${education}`,
+            },
+          ]);
           setLoading(false);
           return;
         }
       }
 
-      // 2️⃣ If no custom response, use Gemini with chat history
+      // 2️⃣ If no match, use Gemini API
       const res = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -318,23 +391,27 @@ export default function Page() {
               disabled={loading}
             />
             {suggestions.length > 0 && (
-              <div className="absolute flex justify-between top-full left-0 right-0 bg-gray-800 text-white rounded-md mt-1 max-h-40 overflow-y-auto z-50 shadow-lg">
+                <div className="absolute top-full left-0 right-0 bg-gray-800 text-white rounded-md mt-1 max-h-40 overflow-y-auto z-50 shadow-lg">
                 {suggestions.map((key, idx) => (
+                  <div key={idx} className="flex justify-between px-3 py-2 hover:bg-gray-700 cursor-pointer">
                   <div
-                    key={idx}
                     onClick={() => handleSuggestionClick(key)}
-                    className="px-3 py-2 hover:bg-gray-700 cursor-pointer capitalize"
+                    className="capitalize"
                   >
                     {key.replace(/_/g, " ")}
                   </div>
+                  <div
+                    onClick={(e) => {
+                    e.stopPropagation();
+                    setSuggestions((prev) => prev.filter((k) => k !== key));
+                    }}
+                    className="px-3 py-2 text-red-900 hover:bg-red-300 cursor-pointer"
+                  >
+                    <IconX />
+                  </div>
+                  </div>
                 ))}
-                <div
-                  onClick={() => setSuggestions([])}
-                  className="px-3 py-2 text-red-400 hover:bg-red-900 cursor-pointer"
-                >
-                  <IconX/>
                 </div>
-              </div>
             )}
             <button
               onClick={sendMessage}

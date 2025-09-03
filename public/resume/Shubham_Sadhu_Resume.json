@@ -1,0 +1,125 @@
+{
+    "name": "Shubham Sadhu",
+    "contact": {
+        "email": "shubhamsadhu02@gmail.com",
+        "phone": "+91-8002490015",
+        "location": "Bengaluru, Karnataka",
+        "links": {
+            "github": "https://github.com/shubham3000",
+            "linkedin": "https://www.linkedin.com/in/shubham-sadhu-9a0493201/",
+            "portfolio": "https://my-portfolio-shubham3000s-projects.vercel.app/",
+            "internship": "https://drive.google.com/file/d/1rkZYNuaacYzJgiIB3W-7SUHkwDVG5GE-/view?usp=sharing",
+            "project": "https://your-planners.vercel.app/",
+            "certifications": {
+                "azure": "https://www.credly.com/badges/783ad677-a366-4f85-8ba0-7be565b1c779/public_url",
+                "automation_anywhere": "https://certificates.automationanywhere.com/4affe862-e5f5-4af6-a2e3-f0fe2dac8894#acc.dKxiFcEy",
+                "leetcode": "https://leetcode.com/shubhamsadhu02/",
+                "hackerrank": "https://www.hackerrank.com/profile/shubhamsadhu02"
+            }
+        }
+    },
+    "technical_skills": [
+        "Python",
+        "JavaScript",
+        "SQL",
+        "Oracle",
+        "HTML5",
+        "Tailwind CSS",
+        "Framer",
+        "ReactJs",
+        "Vite",
+        "Power Apps",
+        "Power Automate",
+        "Jira",
+        "Azure",
+        "Selenium",
+        "Automation Anywhere (A360)",
+        "Postman",
+        "Git",
+        "Figma",
+        "react",
+        "redux",
+        "bootstrap",
+        "css",
+        "firebase",
+        "pandas",
+        "numpy",
+        "openpyxl",
+        "react-router",
+        "nextJs",
+        "next",
+        "Django",
+        "RPA"
+    ],
+    "work_experience": [
+        {
+            "role": "Software Developer",
+            "company": "TCS, Bangalore",
+            "duration": "July 2022 - Present",
+            "projects": [
+                {
+                    "name": "Dashboard",
+                    "achievements": [
+                        "Built ReactJs interfaces, enhancing usability by 25% and accelerating development by 30%.",
+                        "Leveraged Azure services for real-time data, increasing user interactions by 40%.",
+                        "Improved cross-platform performance, reducing load times by 35%.",
+                        "Implemented secure authentication with MSAL.",
+                        "Optimized maintainability using Redux and MVC architecture, reducing debugging time by 30%.",
+                        "Created search filters and reusable components to enhance navigation.",
+                        "Refined UI for accessibility, improving navigation ease by 20%.",
+                        "Conducted user feedback sessions to propose workflow improvements."
+                    ]
+                },
+                {
+                    "name": "Automation",
+                    "achievements": [
+                        "Automated regression testing using Selenium and A360, reducing manual effort by 80%.",
+                        "Scripted Python-based solutions, reducing repetitive tasks by 60%.",
+                        "Refined database queries, improving reporting efficiency by 60%.",
+                        "Configured Azure Logic Apps to minimize workflow delays by 50%.",
+                        "Designed CI/CD pipelines in Azure DevOps, reducing release cycles by 30%.",
+                        "Introduced error-handling mechanisms, cutting disruptions by 25%.",
+                        "Mentored team members on automation practices, boosting productivity by 15%."
+                    ]
+                }
+            ]
+        },
+        {
+            "role": "Frontend Developer Intern",
+            "company": "Atorvis Pvt. Ltd., Kolkata",
+            "duration": "May 2021 \u2013 November 2021",
+            "achievements": [
+                "Developed responsive landing pages, increasing user engagement by 20%.",
+                "Improved website performance, reducing rendering time by 40%.",
+                "Built an admin panel for data management, improving task efficiency by 25%.",
+                "Proposed innovative design ideas, raising client satisfaction by 15%.",
+                "Collaborated with backend developers to integrate APIs into the frontend."
+            ]
+        }
+    ],
+    "personal_projects": [
+        {
+            "name": "Your Planner (Event management social media)",
+            "date": "June 2022",
+            "link": "https://your-planners.vercel.app/",
+            "achievements": [
+                "Engineered a booking system and search features, driving a 25% rise in engagement.",
+                "Implemented Firebase for secure data management with consistent performance.",
+                "Crafted a responsive UI using ReactJs and Tailwind CSS, enhancing speed and UX by 40%.",
+                "Added user authentication and role-based access for enhanced security."
+            ]
+        }
+    ],
+    "certifications": [
+        "Microsoft Certified: Azure Fundamentals",
+        "Automation Anywhere Certificate",
+        "LeetCode: Solved 100+ problems",
+        "Hackerrank: Certifications"
+    ],
+    "education": {
+        "institution": "RCC Institute of Information Technology, Kolkata, West Bengal",
+        "degree": "Bachelor of Technology - Computer Science and Engineering",
+        "duration": "2018 - 2022",
+        "cgpa": "8.79"
+    }
+}
