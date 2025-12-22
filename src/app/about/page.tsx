@@ -24,7 +24,7 @@ export default function page() {
             className="text-lg text-white"
           >
             Hey there! I&apos;m Shubham Sadhu, a passionate Software Developer
-            based in Bengaluru.
+            based in Kolkata.
             <br />
             At Tata Consultancy Services (TCS), I&apos;ve been shaping powerful
             digital experiences since July 2022. I work on major projects across
