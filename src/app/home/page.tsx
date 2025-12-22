@@ -43,7 +43,7 @@ const socials = [
   },
   {
     title: "Resume",
-    href: "/resume/Shubham Sadhu_Resume.pdf",
+    href: "/resume/Shubham_Sadhu_Resume.pdf",
     icon: IconFileCv,
   },
   {
