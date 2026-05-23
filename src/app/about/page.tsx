@@ -24,17 +24,7 @@ export default function page() {
             className="text-lg text-white"
           >
             Hey there! I&apos;m Shubham Sadhu, a passionate Software Developer
-            based in Kolkata, West Bengal.
-            <br />
-            <br />
-            Currently, I’m working at Godrej Infotech Ltd. as an RPA Developer,
-            where I focus on building automation solutions that improve
-            operational efficiency and reduce manual effort. I work extensively
-            with Automation Anywhere (A360), Python, Selenium, Azure Logic Apps,
-            and DevOps pipelines to streamline business processes, automate
-            regression testing, optimize reporting workflows, and enhance
-            deployment reliability.
-            <br />
+            based in Bengaluru.
             <br />
             Previously, I worked at TCS from July 2022, where I contributed to
             major projects across Dashboard Development and Automation. Using
