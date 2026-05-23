@@ -24,36 +24,44 @@ export default function page() {
             className="text-lg text-white"
           >
             Hey there! I&apos;m Shubham Sadhu, a passionate Software Developer
-            based in Bengaluru.
-            <br />
-            At Tata Consultancy Services (TCS), I&apos;ve been shaping powerful
-            digital experiences since July 2022. I work on major projects across
-            Dashboard Development and Automation. Using React.js, I build
-            modular, responsive user interfaces that boosted usability by 25%
-            and reduced load times by 35%. I integrate real-time data using
-            Azure services, implement secure user authentication with MSAL, and
-            optimize app performance through Redux and MVC architecture. My
-            focus is always on creating seamless, accessible, and
-            high-performing applications.
+            based in Kolkata, West Bengal.
             <br />
             <br />
-            On the automation side, I streamlined regression testing by
-            automating it with Selenium and Automation Anywhere (A360), cutting
-            manual effort by 80%. I developed Python scripts to automate data
-            processing, optimized database queries to speed up reporting by 60%,
-            and built Azure Logic Apps and DevOps pipelines to make deployments
-            faster and more reliable.
+            Currently, I’m working at Godrej Infotech Ltd. as an RPA Developer,
+            where I focus on building automation solutions that improve
+            operational efficiency and reduce manual effort. I work extensively
+            with Automation Anywhere (A360), Python, Selenium, Azure Logic Apps,
+            and DevOps pipelines to streamline business processes, automate
+            regression testing, optimize reporting workflows, and enhance
+            deployment reliability.
             <br />
             <br />
-            Before TCS, I interned as a Frontend Developer at Atorvis Pvt. Ltd.,
-            where I developed responsive landing pages, improved site
-            performance by 40%, built an admin panel, and collaborated closely
-            with backend teams. This experience taught me how to create
-            user-first designs while maintaining technical excellence.
+            Previously, I worked at TCS from July 2022, where I contributed to
+            major projects across Dashboard Development and Automation. Using
+            React.js, I built modular and responsive user interfaces that
+            improved usability and application performance. I integrated
+            real-time data using Azure services, implemented secure
+            authentication with MSAL, and optimized applications through Redux
+            and MVC architecture to create scalable and high-performing
+            solutions.
             <br />
             <br />
-            Every project I work on, I aim to bring not just code — but real
-            value, efficiency, and innovation.
+            On the automation side at TCS, I automated access management bots,
+            helath check monitoring bots, report generation bots using Selenium
+            and Automation Anywhere, significantly reducing manual effort and
+            improving efficiency. I also developed Python scripts for data
+            processing and optimized database queries to accelerate reporting
+            workflows.
+            <br />
+            <br />
+            Before TCS, I interned as a Frontend Developer at , where I
+            developed responsive landing pages, improved website performance,
+            built admin panels, and collaborated closely with backend teams to
+            deliver user-focused digital experiences.
+            <br />
+            <br />
+            I believe every project is an opportunity to create not just
+            code, but real value through innovation, automation, and technology.
           </motion.p>
         </div>
       </div>

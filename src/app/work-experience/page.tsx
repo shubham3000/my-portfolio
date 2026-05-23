@@ -6,11 +6,22 @@ import { LinkPreview } from "@/Components/ui/link-preview";
 export default function page() {
   const data = [
     {
-      title: "2022-Present",
+      title: "May 2026 - Present",
       content: (
         <div>
           <p className="text-white text-2xl font-semibold mb-4">
-            Software Developer | Tata Consultancy Services, Bangalore
+            RPA Developer | Godrej Infotech Ltd., Kolkata
+          </p>
+          
+        </div>
+      ),
+    },
+    {
+      title: "Jul 2022-May 2026",
+      content: (
+        <div>
+          <p className="text-white text-2xl font-semibold mb-4">
+            Software Developer | Tata Consultancy Services, Kolkata
           </p>
           <div>
             <p className="text-white text-xl font-semibold mb-4">
